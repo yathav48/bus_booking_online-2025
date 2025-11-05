@@ -4,7 +4,7 @@
   box-sizing: border-box;
 }
 
-body {
+html, body {
   overflow-x: hidden;
 }
 
@@ -23,11 +23,22 @@ body {
   height: max-content;
   margin-bottom: 0;
 }
-
+/* Home page header */
 .header {
   text-transform: capitalize;
   max-width: max-content;
   height: fit-content;
   color: white;
   padding-top:35px;
+  padding-left: 20px;
+}
+@media screen and (max-width: 1023px) {
+  .title {
+    top:50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+  .title h1 {
+    text-align: center;
+  }
 }

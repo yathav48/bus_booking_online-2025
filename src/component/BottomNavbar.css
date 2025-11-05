@@ -1,0 +1,6 @@
+.active-bottom-nav.active span{
+    color: #d84e55;
+}
+.active-bottom-nav.active .icon svg {
+    fill: #d84e55;
+}

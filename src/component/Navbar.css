@@ -4,8 +4,7 @@
 }
 
 .navbar .navbar-container {
-  padding-left: 60px !important;
-  padding-right: 60px !important;
+  padding: 0 1.5rem;
 }
 
 .booking-links a{
@@ -26,12 +25,12 @@
     flex-direction: column;
     align-items: center;
     cursor: pointer;
-    padding-bottom: 3px;
     border-bottom: 3px solid transparent;
     color: #3e3e52;
     font-size: 14px;
     font-weight: 500;
     transition: all 0.3s ease-in-out, border-bottom 0.3s ease;
+    padding: 0px 13px 3px 13px;
 }
 
 .navbar-active:hover {

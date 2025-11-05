@@ -1,14 +1,14 @@
-import './Navbar.css'
+import React from 'react'
 import './App.css'
 import Navbarcomponent from './component/Navbar'
-import BusHomePage from './pages/BusHomePage'
+import Componentload from './Routing/Componentload'
 
 function App() {
 
   return (
     <>
       <Navbarcomponent />
-      <BusHomePage />
+      <Componentload />
     </>
   )
 }

@@ -8,54 +8,59 @@ import busIcon from '../assets/bus-icon.svg';
 import trainIcon from '../assets/train.svg';
 import { useLocation } from 'react-router-dom';
 import { NavLink } from 'react-router-dom';
+import { useEffect, useState } from 'react';
+import './Navbar.css';
 
 export default function Navbarcomponent() {
     const location = useLocation();
     const currentpath = location.pathname;
     console.log('currrentpath:', currentpath);
     return (
-        <Navbar expand="lg" className="bg-white shadow-sm navbar-main">
-            <Container fluid className="d-flex justify-content-between align-items-center navbar-container">
+        <>
+            <Navbar expand="lg" className="bg-white shadow-sm navbar-main">
+                <Container fluid className="d-flex justify-content-between align-items-center navbar-container">
 
-                <div className="d-flex align-items-center gap-4">
+                    <div className="d-flex align-items-center gap-4 ">
+                        <div className='hidden md:block'>
+                            <Nav.Link as={NavLink} to='/'>
+                                <img src={busIcon} alt="bus-logo" width={50} />
+                            </Nav.Link>
+                        </div>
 
-                    <Navbar.Brand href="#home">
-                        <img src={busIcon} alt="bus-logo" height="35" />
-                    </Navbar.Brand>
+
+                        <Nav className="d-flex flex-row gap-2 align-items-center booking-links">
+                            <Nav.Link as={NavLink} to='/buspage'>
+                                <div className={`navbar-active ${(currentpath === '/buspage' || currentpath === '/') ? 'active' : ''}`}>
+                                    <img src={busIcon} alt="bus" />
+                                    <span className='pr-[2]'>Bus Tickets</span>
+                                </div>
+                            </Nav.Link>
+                            <Nav.Link as={NavLink} to='/trainpage'>
+                                <div className={`navbar-active ${(currentpath === '/trainpage') ? 'active' : ''}`}>
+                                    <img src={trainIcon} alt="train" />
+                                    <span>Train Tickets</span>
+                                </div>
+                            </Nav.Link>
+                        </Nav>
+                    </div>
 
 
-                    <Nav className="d-flex flex-row gap-4 align-items-center booking-links">
-                        <Nav.Link as={NavLink} to='/bus'>
-                            <div className={`navbar-active ${(currentpath === '/bus' || currentpath === '/') ? 'active' : ''}`} onClick={() => setactivetap('bus')}>
-                                <img src={busIcon} alt="bus" />
-                                <span>Bus Tickets</span>
-                            </div>
+                    <Nav className="!hidden lg:!flex d-flex flex-row gap-4 align-items-center right-menu">
+                        <Nav.Link href="/bookingpage" target='_blank' rel="noopener noreferrer" className="d-flex align-items-center gap-1">
+                            <TfiMenuAlt size={18} />
+                            <span>Bookings</span>
                         </Nav.Link>
-                        <Nav.Link as={NavLink} to='/train'>
-                            <div className={`navbar-active ${(currentpath === '/train' || currentpath === '/train')? 'active' : ''}`} onClick={() => setactivetap('train')}>
-                                <img src={trainIcon} alt="train" />
-                                <span>Train Tickets</span>
-                            </div>
+                        <Nav.Link href="/helppage" target='_blank' rel='noopener noreferrer' className="d-flex align-items-center gap-1">
+                            <IoMdHelpCircleOutline size={20} />
+                            <span>Help</span>
+                        </Nav.Link>
+                        <Nav.Link href="#account" className="d-flex align-items-center gap-1">
+                            <MdOutlineAccountCircle size={20} />
+                            <span>Account</span>
                         </Nav.Link>
                     </Nav>
-                </div>
-
-
-                <Nav className="d-flex flex-row gap-4 align-items-center right-menu">
-                    <Nav.Link href="#bookings" className="d-flex align-items-center gap-1">
-                        <TfiMenuAlt size={18} />
-                        <span>Bookings</span>
-                    </Nav.Link>
-                    <Nav.Link href="#help" className="d-flex align-items-center gap-1">
-                        <IoMdHelpCircleOutline size={20} />
-                        <span>Help</span>
-                    </Nav.Link>
-                    <Nav.Link href="#account" className="d-flex align-items-center gap-1">
-                        <MdOutlineAccountCircle size={20} />
-                        <span>Account</span>
-                    </Nav.Link>
-                </Nav>
-            </Container>
-        </Navbar>
+                </Container>
+            </Navbar>
+        </>
     );
 }
