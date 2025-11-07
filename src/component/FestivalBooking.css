@@ -15,3 +15,13 @@
         opacity: 0;
     }
 }
+.color-classes {
+    border: 2px solid transparent;
+  border-image: linear-gradient(
+    90deg,
+    rgb(237, 98, 19),
+    rgb(237, 19, 150),
+    rgb(141, 50, 233)
+  ) 1;
+  border-radius: 16px;
+}

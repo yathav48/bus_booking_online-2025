@@ -96,7 +96,7 @@ export default function BusSearchBar() {
 
   return (
     <div className="relative px-0 sm:px-6 lg:px-8 -mt-16 max-w-7xl mx-auto bottom-14 bussearch-container">
-      <div className="bg-white dark:bg-black/20 rounded-xl shadow-lg pt-4 !pr-4 !pl-4 !pb-14 min-h-[140px] relative overflow-visible bussearch-inner md:bg-none md:shadow-none">
+      <div className="bg-white dark:bg-black/20 rounded-2xl shadow-lg pt-4 !pr-4 !pl-4 !pb-14 min-h-[140px] relative overflow-visible bussearch-inner md:bg-none md:shadow-none">
         <div className="flex flex-col lg:flex-row gap-2 items-center">
           {/* Inputs Grid */}
           <div className="relative w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-0 flex-1 border border-gray-400 rounded-2xl overflow-hidden divide-x-1 divide-gray-300">

@@ -1,6 +1,7 @@
 import BottomNavbar from "../component/BottomNavbar";
 import BusSearchBar from "../component/BusSearchBar";
 import FestivalBooking from "../component/FestivalBooking";
+import Navbarcomponent from "../component/Navbar";
 
 export default function Home() {
     return (

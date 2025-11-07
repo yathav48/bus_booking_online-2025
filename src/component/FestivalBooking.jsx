@@ -4,6 +4,8 @@ import calender from '../assets/calender-hook.svg';
 import '../component/FestivalBooking.css';
 import { IoMdTrain } from "react-icons/io";
 import { Link } from 'react-router-dom';
+import traditionguys from '../assets/traditionalguys.jpg';
+import OffersCard from './OffersCard';
 
 export default function FestivalBooking() {
 
@@ -20,11 +22,11 @@ export default function FestivalBooking() {
                 </div>
                 <div className='bg-gray-100 dark:bg-black/20 rounded-xl shadow-lg p-3 md:p-0 min-h-[140px] relative'>
                     <div className='flex flex-col md:flex-row justify-between items-center gap-2'>
-                        <div className='flex flex-col lg:flex-row gap-2 m-1 align-content-normal p-1 items-center lg:items-center w-full md:w-auto'>
-                            <div>Get $100 off using code
+                        <div className='flex flex-col lg:flex-row gap-2 m-1 align-content-normal p-1 items-center md:items-start lg:items-center w-full md:w-auto'>
+                            <div className='whitespace-normal md:whitespace-nowrap'>Get $100 off using code
                                 <strong className='text-green-600'>FESTIVAL</strong>
                             </div>
-                            <div className='flex flex-row gap-2 md:gap-4 items-center'>
+                            <div className='flex flex-row gap-2 justify-center w-full'>
                                 {/* <div className='flex flex-col text-center items-center w-60 border-1 border-blue-500 rounded-2xl'>
                                     <img src={calender} alt="/" width={64} />
                                     <div>Nov</div>
@@ -33,9 +35,9 @@ export default function FestivalBooking() {
                                     </div>
                                 </div> */}
 
-                                <div className="relative rounded-2xl border-1 border-pink-400 pt-2 flex flex-col items-center min-w-[130px] md:min-w-[180px]">
+                                <div className="relative border-1 border-pink-400 rounded-2xl pt-2 flex flex-col items-center w-full md:w-[200px]">
                                     <img src={calender} alt="calendar pin" className="absolute -top-4 left-1/2 -translate-x-1/2 w-15" />
-                                    <div className="text-base font-semibold">Nov</div>
+                                    <div className="text-base font-semibold">Dec</div>
                                     <div className="overflow-hidden h-6 w-full relative">
                                         <span className="whitespace-nowrap overflow-hidden text-ellipsis scroll-text text-pink-400 text-xs absolute bottom-4 left-1/2 -translate-x-1/2">
                                             Christmas Day
@@ -43,9 +45,9 @@ export default function FestivalBooking() {
                                     </div>
                                 </div>
 
-                                <div className='flex flex-col text-center items-center border-1 border-blue-700 rounded-2xl relative pt-2 min-w-[130px] md:min-w-[180px]'>
+                                <div className='flex flex-col text-center items-center border-1 border-blue-700 rounded-2xl relative pt-2 w-full md:w-[200px]'>
                                     <img src={calender} alt="calendar pin" className='absolute -top-4 left-1/2 -translate-x-1/2 w-15' />
-                                    <div className='text-base font-semibold'>Dec</div>
+                                    <div className='text-base font-semibold'>Jan</div>
                                     <div className='overflow-hidden h-6 w-full relative'>
                                         <span className='whitespace-nowrap overflow-hidden text-ellipsis scroll-text text-blue-600 text-xs absolute bottom-4 left-1/2 -translate-x-1/2'>
                                             New Year</span>
@@ -70,12 +72,25 @@ export default function FestivalBooking() {
                 </div>
             </article>
             <section>
-                <div className='flex flex-row justify-between items-center'>
-                    <div>Offers for you</div>
-                    <div>
-                        <Link> link </Link>
+                <div className='bg-green-300 p-4 min-h-[130px] items-center justify-center rounded-2xl'>
+                    <div className='md:flex relative md:flex-row justify-start gap-4 items-center p-3'>
+                        <div className='flex flex-col text-start'>
+                            <div className='font-bold text-2xl text-black'>
+                                25000+ people booked from coimbatore
+                            </div>
+                            <div>on redbus last month</div>
+                        </div>
+                        <div className='absolute -right-4 -top-2'>
+                            <img src={traditionguys} alt="#" className="h-[120px] w-auto object-contain flex-shrink-0"/>
+                        </div>
                     </div>
                 </div>
+            </section>
+            <section className='mt-4'>
+                <OffersCard />
+            </section>
+            <section>
+                
             </section>
         </div>
     )
