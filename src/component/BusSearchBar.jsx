@@ -178,7 +178,7 @@ export default function BusSearchBar() {
 
 
           {/* Women Booking Toggle */}
-          <div className="flex flex-row md:flex-row items-center justify-between w-full lg:w-[320px] h-auto gap-2 lg:gap-4 women-toggle rounded-lg p-2 border border-gray-300">
+          <div className="flex flex-row md:flex-row items-center justify-between w-full lg:w-[320px] h-auto gap-2 lg:gap-4 women-toggle rounded-2xl p-2 border border-gray-300">
             <div className="flex items-center gap-3">
               <img src={femaleicon} alt="" width={20} height={20} className="w-7 h-7 mt-1" />
               <div className="flex flex-col leading-tight">

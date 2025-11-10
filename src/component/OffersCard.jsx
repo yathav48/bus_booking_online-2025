@@ -17,7 +17,7 @@ import offerbg5 from '../assets/moneycard.png'
 
 
 const offersData = [
-    { id: 1, type: "Bus", title: "Save up to 500 on bus tickets", valid: "Valid till 31 Nov", code: "BUS500", bgImage: offerbg1 },
+    { id: 1, type: "Bus", title: "Save up to 500 on bus tickets", valid: "Valid till 31 Nov", code: "BUS500", bgImage: offerbg1},
     { id: 2, type: "Bus", title: "Save up to 250 on bus tickets", valid: "Valid till 30 Nov", code: "BUS250", bgImage: offerbg2 },
     { id: 3, type: "Bus", title: "Save up to 300 in AP, Telangana", valid: "Valid till 30 Nov", code: "BUS300", bgImage: offerbg2 },
     { id: 4, type: "Bus", title: "Save up to 500 in Karnataka,TN", valid: "Valid till 30 Nov", code: "BUS500KT", bgImage: offerbg4 },
@@ -62,7 +62,7 @@ export default function OffersCard() {
                     <button
                         key={tab}
                         onClick={() => setActiveTab(tab)}
-                        className={`p-2 px-4 py-1.5 !rounded-2xl border text-sm font-medium transition-all ${activeTab === tab
+                        className={`p-1 px-4 py-2 !rounded-2xl border text-sm font-medium transition-all ${activeTab === tab
                             ? "bg-pink-300 !border-pink-300 text-black"
                             : "bg-white border-gray-400 text-black hover:!bg-gray-200"
                             }`}
@@ -76,7 +76,7 @@ export default function OffersCard() {
                 <Swiper
                     modules={[Navigation, Pagination]}
                     spaceBetween={15}
-                    slidesPerView={1.2}
+                    slidesPerView="auto"
                     allowTouchMove={true}
                     // pagination={{ clickable: true, type: "fraction" }}
                     onBeforeInit={(swiper) => {
@@ -89,26 +89,26 @@ export default function OffersCard() {
                     className="pb-10"
                 >
                     {filteredOffers.map((offer) => (
-                        <SwiperSlide key={offer.id} className="!w-70">
-                            <div className="rounded-2xl p-4 min-h-[160px] flex flex-col justify-between shadow-sm bg-cover bg-center"
+                        <SwiperSlide key={offer.id} className="max-w-[310px]">
+                            <Link to='/Offerpage' className="rounded-2xl p-3 h-49 flex flex-col justify-between shadow-sm bg-cover bg-center text-decoration-none"
                                 style={{ backgroundImage: `url(${offer.bgImage})` }}>
                                 <span className="bg-gray-700 text-white text-xs px-3 py-1 rounded-md w-fit">
                                     {offer.type}
                                 </span>
                                 <div>
-                                    <h3 className="!text-xl !font-bold mt-2 text-gray-800">
+                                    <h3 className="!text-lg !font-bold mt-2 text-black">
                                         {offer.title}
                                     </h3>
                                     <p className="text-sm text-gray-600 mt-1">{offer.valid}</p>
                                 </div>
                                 <div className="flex">
-                                    <div className="mt-3 flex flex-row items-center bg-white gap-1 rounded-full text-sm font-bold p-2 text-lg">
+                                    <div className="flex flex-row items-center bg-white gap-1 rounded-full text-sm font-bold p-2 w-fit text-black">
                                         <i className=""><TbTag />
                                         </i>
                                         <div>{offer.code}</div>
                                     </div>
                                 </div>
-                            </div>
+                            </Link>
                         </SwiperSlide>
                     ))}
                 </Swiper>
