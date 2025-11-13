@@ -7,9 +7,9 @@ export default function Home() {
     return (
         <>
         <div className="homepage-layout">
-            {/* <div className="!pl-4">
-            <h1>Bus Tickets</h1>
-            </div> */}
+            <div className="!pl-4 md:hidden">
+            <span className="text-2xl font-bold text-black">Bus Tickets</span>
+            </div>
             <div className="homepage-bg position-relative hidden md:block">
                 <div className= "absolute bg-linear inset-0 bg-gradient-to-tr from-[rgba(0,0,0,0.7)] to-[rgba(0,0,0,0)]">
                     <div className="absolute top-30 start-60 translate-middle text-start text-white text-capitalize text-weight-800 title hidden md:block">

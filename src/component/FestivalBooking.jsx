@@ -7,6 +7,8 @@ import { Link } from 'react-router-dom';
 import traditionguys from '../assets/traditionalguys.jpg';
 import OffersCard from './OffersCard';
 import ImageCarousel from './ImageCarousel';
+import GovernmentBuses from './Governmentbuses';
+import RedbusApplink from './RedbusApplink';
 
 export default function FestivalBooking() {
 
@@ -66,18 +68,18 @@ export default function FestivalBooking() {
                 </div>
             </article>
             <section>
-                <div className='bg-green-300 p-4 lg:!p-2 min-h-[130px] items-center justify-center rounded-2xl'>
+                <div className='bg-green-300 p-4 lg:!p-2 min-h-[130px] items-center justify-center rounded-xl'>
                     <div className='relative p-2'>
                         <div className='flex lg:flex-row lg:justify-center gap-4 items-center'>
-                        <div className='flex flex-col text-start'>
-                            <div className='font-bold text-2xl text-black'>
-                                25000+ people booked from coimbatore
+                            <div className='flex flex-col text-start gap-2'>
+                                <div className='font-bold text-2xl text-black'>
+                                    25000+ people booked from coimbatore
+                                </div>
+                                <div>on redbus last month</div>
                             </div>
-                            <div>on redbus last month</div>
-                        </div>
-                        <div className='absolute lg:relative right-0 -top-auto'>
-                            <img src={traditionguys} alt="#" className="h-[120px] w-auto object-contain flex-shrink-0"/>
-                        </div>
+                            <div className='absolute lg:relative right-0 -top-auto'>
+                                <img src={traditionguys} alt="#" className="h-[120px] w-auto object-contain flex-shrink-0" />
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -87,6 +89,46 @@ export default function FestivalBooking() {
             </section>
             <section>
                 <ImageCarousel />
+            </section>
+            <section>
+                <GovernmentBuses />
+            </section>
+            <section>
+                <article>
+                    <div className='flex flex-col p-2'>
+                        <div className='text-2xl font-bold text-black'>Testimonials</div>
+                        <span className='text-gray-600'>Hear from our satisfied customers in their own words
+                        </span>
+                    </div>
+                    <div className='flex flex-row gap-2 py-4 overflow-x-clip'>
+                        <div className='flex flex-col gap-6 bg-gray-100 p-4 border rounded-2xl'>
+                            <div>
+                                Clean Buses. Courteous Staff
+                            </div>
+                            <div className='flex flex-col'>
+                                <span className='font-semibold text-black'>Sriharan</span>
+                                <span className='text-gray-600'>redbus customer since 2017</span>
+                            </div>
+                        </div>
+                        <div className='flex flex-col gap-4 bg-gray-100 p-4 border rounded-2xl'>
+                            <div className='text-black'>Perfect Ride. Best bus ever..</div>
+                            <div className='flex flex-col'>
+                                    <span className='font-semibold text-black'>Bensha Bennet</span>
+                                    <span className='text-gray-600'>redbus customer since 2019</span>
+                            </div>
+                        </div>
+                        <div className='flex flex-col gap-4 bg-gray-100 p-4 border rounded-2xl'>
+                            <div>Clean Buses. Great Experience.</div>
+                            <div className='flex flex-col'>
+                                <span className='font-semibold text-black'>Karthik Moorty</span>
+                                <span className='text-gray-600'>redbus customer since 2017</span>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+            </section>
+            <section className='mb-4'>
+                <RedbusApplink />
             </section>
         </div>
     )

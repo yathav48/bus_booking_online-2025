@@ -17,7 +17,7 @@ import offerbg5 from '../assets/moneycard.png'
 
 
 const offersData = [
-    { id: 1, type: "Bus", title: "Save up to 500 on bus tickets", valid: "Valid till 31 Nov", code: "BUS500", bgImage: offerbg1},
+    { id: 1, type: "Bus", title: "Save up to 500 on bus tickets", valid: "Valid till 31 Nov", code: "BUS500", bgImage: offerbg1 },
     { id: 2, type: "Bus", title: "Save up to 250 on bus tickets", valid: "Valid till 30 Nov", code: "BUS250", bgImage: offerbg2 },
     { id: 3, type: "Bus", title: "Save up to 300 in AP, Telangana", valid: "Valid till 30 Nov", code: "BUS300", bgImage: offerbg2 },
     { id: 4, type: "Bus", title: "Save up to 500 in Karnataka,TN", valid: "Valid till 30 Nov", code: "BUS500KT", bgImage: offerbg4 },
@@ -27,6 +27,7 @@ const offersData = [
 
 export default function OffersCard() {
     const [activeTab, setActiveTab] = useState("All");
+    const [hovered, sethovered] = useState(false);
     const prevRef = useRef(null);
     const nextRef = useRef(null);
     const swiperRef = useRef(null);
@@ -62,7 +63,7 @@ export default function OffersCard() {
                     <button
                         key={tab}
                         onClick={() => setActiveTab(tab)}
-                        className={`p-1 px-4 py-2 !rounded-2xl border text-sm font-medium transition-all ${activeTab === tab
+                        className={`p-1 px-3 py-2 !rounded-lg border !text-sm font-medium transition-all ${activeTab === tab
                             ? "bg-pink-300 !border-pink-300 text-black"
                             : "bg-white border-gray-400 text-black hover:!bg-gray-200"
                             }`}
@@ -72,7 +73,10 @@ export default function OffersCard() {
                 ))}
             </div>
 
-            <div className="relative">
+            <div
+            onMouseEnter={() => sethovered(true)}
+            onMouseLeave={() => sethovered(false)}
+             className="relative overflow-visible">
                 <Swiper
                     modules={[Navigation, Pagination]}
                     spaceBetween={15}
@@ -103,7 +107,7 @@ export default function OffersCard() {
                                 </div>
                                 <div className="flex">
                                     <div className="flex flex-row items-center bg-white gap-1 rounded-full text-sm font-bold p-2 w-fit text-black">
-                                        <i className=""><TbTag />
+                                        <i><TbTag />
                                         </i>
                                         <div>{offer.code}</div>
                                     </div>
@@ -112,16 +116,16 @@ export default function OffersCard() {
                         </SwiperSlide>
                     ))}
                 </Swiper>
-
                 <button
                     ref={prevRef}
-                    className="absolute top-1/2 left-0 -translate-y-1/2 bg-white text-black p-2 !rounded-full shadow-lg z-10"
+                    className={`absolute top-1/2 left-0 -translate-y-1/2 bg-white p-2 !rounded-full shadow-lg transition-opacity duration-300 ${hovered ? 'opacity-100 z-1' : 'opacity-0'}`}
                 >
                     <IoIosArrowBack />
                 </button>
+
                 <button
                     ref={nextRef}
-                    className="absolute top-1/2 right-0 -translate-y-1/2 bg-white text-black p-2 !rounded-full shadow-lg z-10"
+                    className={`absolute top-1/2 right-0 -translate-y-1/2 bg-white p-2 !rounded-full shadow-lg transition-opacity duration-300 ${hovered ? 'opacity-100 z-1' : 'opacity-0'}`}
                 >
                     <IoIosArrowForward />
                 </button>

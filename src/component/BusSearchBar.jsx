@@ -78,6 +78,7 @@ import "react-datepicker/dist/react-datepicker.css";
 import { AiOutlineCalendar } from "react-icons/ai";
 import { MdOutlineSwapVert } from "react-icons/md";
 import { MdOutlineDirectionsBus } from "react-icons/md";
+import WomenBookingModal from "./WomenBookingmodal";
 
 
 
@@ -88,6 +89,8 @@ export default function BusSearchBar() {
   const [date, setDate] = useState(new Date());
   const [showDatePicker, setShowDatePicker] = useState(false);
   const [isWomenBooking, setIsWomenBooking] = useState(false);
+  const [showWomenModal, setShowWomenModal] = useState(false);
+
 
   const swapCities = () => {
     setFrom(to);
@@ -190,7 +193,12 @@ export default function BusSearchBar() {
             <div className="flex items-center">
               <button
                 type="button"
-                onClick={() => setIsWomenBooking(!isWomenBooking)}
+                onClick={() => {
+                  setIsWomenBooking(!isWomenBooking);
+                  if (!isWomenBooking) {
+                    setShowWomenModal(true);
+                  }
+                }}
                 className={`relative w-14 h-8 flex items-center transition-colors duration-300 !rounded-full border-3 border-gray-600
               ${isWomenBooking ? 'bg-red-600 border-none' : 'bg-gray-300'}`}
               >
@@ -213,6 +221,9 @@ export default function BusSearchBar() {
           <span className="sm:inline font-semibold">Search Buses</span>
         </button>
       </div>
+      {showWomenModal && (
+        <WomenBookingModal onClose={() => setShowWomenModal(false)} />
+      )}
     </div >
   );
 }
