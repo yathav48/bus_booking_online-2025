@@ -98,8 +98,8 @@ export default function BusSearchBar() {
   };
 
   return (
-    <div className="relative px-0 sm:px-6 lg:px-8 -mt-16 max-w-7xl mx-auto bottom-14 bussearch-container">
-      <div className="bg-white dark:bg-black/20 rounded-2xl shadow-lg pt-4 !pr-4 !pl-4 !pb-14 min-h-[140px] relative overflow-visible bussearch-inner md:bg-none md:shadow-none">
+    <div className="relative md:!px-6 -mt-16 max-w-7xl mx-auto bottom-14 bussearch-container">
+      <div className="bg-white dark:bg-black/20 rounded-2xl shadow-lg pt-3 !pr-4 !pl-4 !pb-12 min-h-[120px] relative overflow-visible bussearch-inner md:bg-none md:shadow-none">
         <div className="flex flex-col lg:flex-row gap-2 items-center">
           {/* Inputs Grid */}
           <div className="relative w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-0 flex-1 border border-gray-400 rounded-2xl overflow-hidden divide-x-1 divide-gray-300">
@@ -213,7 +213,7 @@ export default function BusSearchBar() {
 
         {/* Search Button */}
         <button className="absolute left-1/2 -translate-x-1/2 translate-y-1/2
-                     w-70 sm:w-80 h-12 sm:h-14 bg-red-700 text-white
+                     w-70 sm:w-80 h-12 bg-red-700 text-white
                      !rounded-full
                      hover:bg-primary-dark transition-colors 
                      flex items-center justify-center gap-2 shadow-lg">

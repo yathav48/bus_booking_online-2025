@@ -1,5 +1,5 @@
 // ImageCarousel.js
-import React, { useRef, useEffect } from "react";
+import React, { useRef, useEffect, useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/navigation";
@@ -25,6 +25,7 @@ export default function ImageCarousel() {
   const prevRef = useRef(null);
   const nextRef = useRef(null);
   const swiperRef = useRef(null);
+  const [hovered, sethovered] = useState(false);
 
   useEffect(() => {
     if (
@@ -47,7 +48,10 @@ export default function ImageCarousel() {
           <div className="text-2xl font-bold">What's New</div>
         </div>
       </div>
-      <div className="relative">
+      <div
+      onMouseEnter={() => sethovered(true)}
+      onMouseLeave={() => sethovered(false)}
+       className="relative">
         <Swiper
           modules={[Navigation]}
           spaceBetween={15}
@@ -72,13 +76,13 @@ export default function ImageCarousel() {
 
         <button
           ref={prevRef}
-          className="absolute top-1/2 left-0 -translate-y-1/2 bg-white !rounded-full shadow-lg z-10 w-10 h-10 flex items-center justify-center"
+          className={`absolute top-1/2 left-0 -translate-y-1/2 bg-white !rounded-full transition-opacity z-10 w-10 h-10 flex items-center justify-center duration-300 ${hovered ? "opacity-100 z-1" : "opacity-0"}`}
         >
           <IoIosArrowBack />
         </button>
         <button
           ref={nextRef}
-          className="absolute top-1/2 right-0 -translate-y-1/2 bg-white !rounded-full shadow-lg z-10 w-10 h-10 flex items-center justify-center"
+          className={`absolute top-1/2 right-0 -translate-y-1/2 bg-white !rounded-full transition-opacity z-10 w-10 h-10 flex items-center justify-center duration-300 ${hovered ? "opacity-100 z-1" : "opacity-0"}`}
         >
           <IoIosArrowForward />
         </button>
