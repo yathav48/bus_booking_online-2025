@@ -43,15 +43,14 @@ export default function ImageCarousel() {
 
   return (
     <>
-      <div>
-        <div className="mb-4 px-2">
+      
+        <div className="mb-4">
           <div className="text-2xl font-bold">What's New</div>
-        </div>
       </div>
       <div
-      onMouseEnter={() => sethovered(true)}
-      onMouseLeave={() => sethovered(false)}
-       className="relative">
+        onMouseEnter={() => sethovered(true)}
+        onMouseLeave={() => sethovered(false)}
+        className="relative">
         <Swiper
           modules={[Navigation]}
           spaceBetween={15}

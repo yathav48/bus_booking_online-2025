@@ -2,7 +2,7 @@ import localbus1 from '../assets/localbusone.png';
 import localbus2 from '../assets/localbustwo.png';
 import localbus4 from '../assets/localbusfour.png';
 import redbus from '../assets/bus-icon.svg';
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
@@ -24,6 +24,7 @@ export default function GovernmentBuses() {
     const prevRef = useRef(null);
     const nextRef = useRef(null);
     const swiperRef = useRef(null);
+    const [hovered, sethovered] = useState(false);
 
     useEffect(() => {
         if (
@@ -42,10 +43,13 @@ export default function GovernmentBuses() {
 
     return (
         <div>
-            <div className='mb-4 px-2 font-bold text-2xl'>
+            <div className='mb-4 font-bold text-2xl'>
                 <div>Government Buses</div>
             </div>
-            <div className='relative'>
+            <div
+            onMouseEnter={() => sethovered(true)}
+            onMouseLeave={() => sethovered(false)}
+             className='relative'>
                 <Swiper
                     modules={[Navigation]}
                     spaceBetween={15}
@@ -55,7 +59,7 @@ export default function GovernmentBuses() {
                         1024: { slidesPerView: 3.5 }
                     }}
                     onBeforeInit={(swiper) => (swiperRef.current = swiper)}
-                >
+                    >
                     {busdata.map((bus) => (
                         <SwiperSlide key={bus.id} className='max-w-[310px] shadow-gray-400 shadow-md border border-gray-200 rounded-2xl'>
                             <div className='rounded-2xl p-3 flex flex-col gap-2 '>
@@ -91,14 +95,12 @@ export default function GovernmentBuses() {
                 </Swiper>
                 <button
                     ref={prevRef}
-                    className="absolute top-1/2 left-0 -translate-y-1/2 bg-white text-black p-2 !rounded-full shadow-lg z-10"
-                >
+                    className={`absolute top-1/2 left-0 -translate-y-1/2 bg-white text-black p-2 !rounded-full shadow-lg ${hovered ? 'opacity-100 z-1' : 'opacity-0'}`}>
                     <IoIosArrowBack />
                 </button>
                 <button
                     ref={nextRef}
-                    className="absolute top-1/2 right-0 -translate-y-1/2 bg-white text-black p-2 !rounded-full shadow-lg z-10"
-                >
+                    className={`absolute top-1/2 right-0 -translate-y-1/2 bg-white text-black p-2 !rounded-full shadow-lg ${hovered ? 'opacity-100 z-1' : 'opacity-0'}`}>
                     <IoIosArrowForward />
                 </button>
             </div>

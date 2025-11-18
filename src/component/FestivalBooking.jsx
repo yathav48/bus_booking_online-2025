@@ -9,14 +9,15 @@ import OffersCard from './OffersCard';
 import ImageCarousel from './ImageCarousel';
 import GovernmentBuses from './Governmentbuses';
 import RedbusApplink from './RedbusApplink';
+import Testimonialsection from './TestimonialSection';
 
 export default function FestivalBooking() {
 
     return (
-        <div className='flex flex-col gap-4 max-w-7xl mx-auto mb-50px'>
+        <div className='flex flex-col gap-4 max-w-7xl mx-auto mb-50px px-4'>
             {/* {Festival Booking} */}
             <article className='mt-4'>
-                <div className='flex gap-3 flex-row m-3 textalign-center align-content-normal'>
+                <div className='flex gap-3 flex-row my-3 textalign-center align-content-normal'>
                     <img src={festivaltrain} alt="#" />
                     <div className='flex flex-col flex-start'>
                         <div className='text-xl font-bold text-black'>Book trains for festival</div>
@@ -93,39 +94,9 @@ export default function FestivalBooking() {
             <section>
                 <GovernmentBuses />
             </section>
+            {/* Testimonial section */}
             <section>
-                <article>
-                    <div className='flex flex-col p-2'>
-                        <div className='text-2xl font-bold text-black'>Testimonials</div>
-                        <span className='text-gray-600'>Hear from our satisfied customers in their own words
-                        </span>
-                    </div>
-                    <div className='flex flex-row gap-2 py-4 overflow-x-clip'>
-                        <div className='flex flex-col gap-6 bg-gray-100 p-4 border rounded-2xl'>
-                            <div>
-                                Clean Buses. Courteous Staff
-                            </div>
-                            <div className='flex flex-col'>
-                                <span className='font-semibold text-black'>Sriharan</span>
-                                <span className='text-gray-600'>redbus customer since 2017</span>
-                            </div>
-                        </div>
-                        <div className='flex flex-col gap-4 bg-gray-100 p-4 border rounded-2xl'>
-                            <div className='text-black'>Perfect Ride. Best bus ever..</div>
-                            <div className='flex flex-col'>
-                                    <span className='font-semibold text-black'>Bensha Bennet</span>
-                                    <span className='text-gray-600'>redbus customer since 2019</span>
-                            </div>
-                        </div>
-                        <div className='flex flex-col gap-4 bg-gray-100 p-4 border rounded-2xl'>
-                            <div>Clean Buses. Great Experience.</div>
-                            <div className='flex flex-col'>
-                                <span className='font-semibold text-black'>Karthik Moorty</span>
-                                <span className='text-gray-600'>redbus customer since 2017</span>
-                            </div>
-                        </div>
-                    </div>
-                </article>
+                <Testimonialsection />
             </section>
             <section className='mb-4'>
                 <RedbusApplink />

@@ -52,13 +52,13 @@ export default function OffersCard() {
     }, []);
 
     return (
-        <div className="py-6">
-            <div className="flex flex-row justify-between items-center mb-4 px-2">
+        <div>
+            <div className="flex flex-row justify-between items-center mb-4">
                 <div className="text-2xl font-bold">Offers for you</div>
                 <Link to="/offerpage">View more</Link>
             </div>
 
-            <div className="flex flex-row gap-3 mb-2">
+            <div className="flex flex-row gap-3 mb-3">
                 {["All", "Bus", "Train"].map((tab) => (
                     <button
                         key={tab}

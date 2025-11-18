@@ -14,7 +14,6 @@ export default function WomenBookingModal({ onClose }) {
                     </button>
                 </div>
                 <div>
-
                     <div className="flex flex-col gap-2">
                         <div className="px-2">
                             <h2 className="text-2xl font-extrabold text-black text-center">
@@ -25,7 +24,7 @@ export default function WomenBookingModal({ onClose }) {
                             </p>
                         </div>
 
-                        <div className="grid grid-cols-2 gap-4 text-center">
+                        <div className="grid grid-cols-2 gap-2 py-4 text-center px-4">
                             <div className="p-3 bg-pink-100 rounded-xl">
                                 Exclusive deals for women
                             </div>
@@ -39,12 +38,14 @@ export default function WomenBookingModal({ onClose }) {
                                 Buses preferred by women
                             </div>
                         </div>
+                        <div className="flex items-center">
                         <button
-                            className="mt-6 w-full bg-red-600 text-white py-2 rounded-full font-semibold hover:bg-red-700"
+                            className="mt-6 w-50 bg-red-600 text-white py-2 rounded-full font-semibold hover:bg-red-700"
                             onClick={onClose}
                         >
                             Got it
                         </button>
+                        </div>
                     </div>
                 </div>
             </div>
