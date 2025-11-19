@@ -2,7 +2,7 @@ import busicon from "../assets/bus-icon.svg";
 export default function AboutContainer() {
     return (
         <div className="p-4">
-            <div className="flex flex-col lg:flex-row gap-2 lg:!gap-4 p-2 lg:items-center border-b border-gray-300">
+            <div className="flex flex-col lg:flex-row gap-2 lg:!gap-4 p-2 lg:items-center border-b border-gray-300 max-w-7xl mx-auto">
                 <div>
                     <img src={busicon} alt="#" className="w-17 h-17" />
                 </div>

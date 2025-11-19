@@ -1,6 +1,27 @@
 import { IoMdClose } from "react-icons/io";
+import womensicon1 from '../assets/womensonly.svg';
+import womensicon2 from '../assets/womenbooking.svg';
+import womensicon3 from '../assets/womenbookingwhy.svg';
+import womensicon4 from '../assets/womenpickuptodrop.svg';
+import 'slick-carousel/slick/slick.css';
+import 'slick-carousel/slick/slick-theme.css';
+import Slider from "react-slick";
 
+const carouselImages = [
+    { id: 1, image: womensicon1 },
+    { id: 2, image: womensicon2 },
+    { id: 3, image: womensicon3 },
+    { id: 4, image: womensicon4 },
+];
 export default function WomenBookingModal({ onClose }) {
+    const settings = {
+        dots: true,
+        infinite: false,
+        speed: 500,
+        slidesToShow: 1,
+        slidesToScroll: 1
+    }
+
     return (
         <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50">
             <div className="bg-white rounded-2xl shadow-lg w-[90%] sm:w-[500px] flex flex-col py-4">
@@ -9,7 +30,7 @@ export default function WomenBookingModal({ onClose }) {
                         onClick={onClose}
                     >
                         <i className="text-2xl">
-                        <IoMdClose />
+                            <IoMdClose />
                         </i>
                     </button>
                 </div>
@@ -24,27 +45,22 @@ export default function WomenBookingModal({ onClose }) {
                             </p>
                         </div>
 
-                        <div className="grid grid-cols-2 gap-2 py-4 text-center px-4">
-                            <div className="p-3 bg-pink-100 rounded-xl">
-                                Exclusive deals for women
-                            </div>
-                            <div className="p-3 bg-pink-100 rounded-xl">
-                                Number of women travelling along
-                            </div>
-                            <div className="p-3 bg-pink-100 rounded-xl">
-                                Priority Women helpline available
-                            </div>
-                            <div className="p-3 bg-pink-100 rounded-xl">
-                                Buses preferred by women
-                            </div>
+                        <div className="px-4 mb-4 items-center">
+                            <Slider {...settings} className="p-4 ">
+                                {carouselImages.map((item) => (
+                                    <div key={item.id} className="h-49">
+                                        <img src={item.image} alt={`Image ${item.id}`} className="w-full h-full" />
+                                    </div>
+                                ))}
+                            </Slider>
                         </div>
-                        <div className="flex items-center">
-                        <button
-                            className="mt-6 w-50 bg-red-600 text-white py-2 rounded-full font-semibold hover:bg-red-700"
-                            onClick={onClose}
-                        >
-                            Got it
-                        </button>
+                        <div className="flex py-2 items-center px-4">
+                            <button
+                                className="mt-6 w-full bg-red-600 text-white py-2 !rounded-full font-semibold hover:bg-red-700"
+                                onClick={onClose}
+                            >
+                                Got it
+                            </button>
                         </div>
                     </div>
                 </div>

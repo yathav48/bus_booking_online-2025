@@ -88,7 +88,7 @@ export default function OffersCard() {
                     }}
                     breakpoints={{
                         768: { slidesPerView: 2.5 },
-                        1024: { slidesPerView: 3.5 },
+                        1024: { slidesPerView: 4 },
                     }}
                     className="pb-10"
                 >

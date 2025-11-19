@@ -43,7 +43,6 @@ export default function ImageCarousel() {
 
   return (
     <>
-      
         <div className="mb-4">
           <div className="text-2xl font-bold">What's New</div>
       </div>
@@ -58,7 +57,7 @@ export default function ImageCarousel() {
           breakpoints={{
             640: { slidesPerView: 1.5 },
             768: { slidesPerView: 2.5 },
-            1024: { slidesPerView: 3 },
+            1024: { slidesPerView: 4 },
           }}
           onBeforeInit={(swiper) => (swiperRef.current = swiper)}
           allowTouchMove={true}

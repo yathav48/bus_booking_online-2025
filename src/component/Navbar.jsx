@@ -17,10 +17,10 @@ export default function Navbarcomponent() {
     console.log('currrentpath:', currentpath);
     return (
         <>
-            <Navbar expand="lg" className="bg-white shadow-sm navbar-main">
-                <Container fluid className="d-flex justify-content-between align-items-center navbar-container">
+            <Navbar expand="lg" className="bg-white shadow-sm navbar-main p-0">
+                <Container className="d-flex justify-content-between align-items-center px-4 !max-w-7xl">
 
-                    <div className="d-flex align-items-center gap-4 ">
+                    <div className="d-flex align-items-center gap-4">
                         <div className='hidden md:block'>
                             <Nav.Link as={NavLink} to='/'>
                                 <img src={busIcon} alt="bus-logo" width={50} />

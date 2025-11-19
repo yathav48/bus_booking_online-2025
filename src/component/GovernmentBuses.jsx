@@ -56,7 +56,7 @@ export default function GovernmentBuses() {
                     slidesPerView="auto"
                     breakpoints={{
                         768: { slidesPerView: 2.5 },
-                        1024: { slidesPerView: 3.5 }
+                        1024: { slidesPerView: 4 }
                     }}
                     onBeforeInit={(swiper) => (swiperRef.current = swiper)}
                     >

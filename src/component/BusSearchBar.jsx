@@ -1,73 +1,3 @@
-// BusSearchBar.jsx
-// import React, { useState } from 'react';
-// import './BusSearchBar.css'
-// import { CgSearch } from "react-icons/cg";
-// import { LuCalendarDays } from "react-icons/lu";
-// import { FaArrowRightArrowLeft } from "react-icons/fa6";
-
-// const BusSearchBar = () => {
-//   const [from, setFrom] = useState('');
-//   const [to, setTo] = useState('');
-//   const [date, setDate] = useState('2025-09-17');
-//   const [isWomenBooking, setIsWomenBooking] = useState(false);
-
-//   const swapCities = () => {
-//     setFrom(to);
-//     setTo(from);
-//   };
-
-//   return (
-//     <div className='bus-search-main-container'>
-//       <div className="bus-search-container">
-//         <div className='bus-search-content'>
-//           <div className='bus-to-date'>
-//             <div className='from'>
-//               <div className="location">
-//                 <span role="img" aria-label="bus"></span>
-//                 <input value={from} onChange={(e) => setFrom(e.target.value)} placeholder='From' />
-//               </div>
-//             </div>
-//             <div className='swap'>
-//               <button className="swap-btn" onClick={swapCities}><FaArrowRightArrowLeft /></button>
-//             </div>
-//             <div className='to'>
-//               <div className="location">
-//                 <span role="img" aria-label="bus"></span>
-//                 <input value={to} onChange={(e) => setTo(e.target.value)} placeholder='To' />
-//               </div>
-//             </div>
-
-//             <div className="date-picker">
-//               <label><LuCalendarDays />Date of Journey</label>
-//               <input type="date" value={date} onChange={(e) => setDate(e.target.value)} />
-//               <button onClick={() => setDate(new Date().toISOString().split('T')[0])}>Today</button>
-//               <button onClick={() => {
-//                 const tomorrow = new Date();
-//                 tomorrow.setDate(tomorrow.getDate() + 1);
-//                 setDate(tomorrow.toISOString().split('T')[0]);
-//               }}>Tomorrow</button>
-//             </div>
-//           </div>
-
-//           <div className="toggle-container">
-//             <label>
-//               <span role="img" aria-label="woman"></span> Booking for women
-//             </label>
-//             <label className="switch">
-//               <input type="checkbox" checked={isWomenBooking} onChange={() => setIsWomenBooking(!isWomenBooking)} />
-//               <span className="slider round"></span>
-//             </label>
-//           </div>
-//         </div>
-//         <button className="search-btn"><CgSearch /> Search buses</button>
-//       </div>
-//     </div>
-//   );
-// };
-
-// export default BusSearchBar;
-
-
 import { useState } from "react";
 import femaleicon from '../assets/female.svg';
 import { Link } from "react-router-dom";
@@ -79,6 +9,7 @@ import { AiOutlineCalendar } from "react-icons/ai";
 import { MdOutlineSwapVert } from "react-icons/md";
 import { MdOutlineDirectionsBus } from "react-icons/md";
 import WomenBookingModal from "./WomenBookingmodal";
+import { motion } from "framer-motion";
 
 
 
@@ -99,7 +30,11 @@ export default function BusSearchBar() {
 
   return (
     <div className="relative md:!px-6 -mt-16 max-w-7xl mx-auto bottom-14 bussearch-container">
-      <div className="md:!bg-white md:dark:bg-black/20 rounded-2xl md:shadow-lg pt-3 !pr-4 !pl-4 !pb-12 min-h-[120px] relative overflow-visible">
+      <motion.div
+        initial={{ y: 60, opacity: 0 }}
+        animate={{ y: 0, opacity: 1 }}
+        transition={{ duration: 1, ease: "easeInOut" }}
+        className="md:!bg-white md:dark:bg-black/20 rounded-2xl md:shadow-lg pt-3 !pr-4 !pl-4 !pb-12 min-h-[120px] relative overflow-visible">
         <div className="flex flex-col lg:flex-row gap-2 items-center">
           {/* Inputs Grid */}
           <div className="relative w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-0 flex-1 border border-gray-400 rounded-2xl overflow-hidden divide-x-1 divide-gray-300">
@@ -220,7 +155,7 @@ export default function BusSearchBar() {
           <span className="material-symbols-outlined">search</span>
           <span className="sm:inline font-semibold">Search Buses</span>
         </button>
-      </div>
+      </motion.div>
       {showWomenModal && (
         <WomenBookingModal onClose={() => setShowWomenModal(false)} />
       )}

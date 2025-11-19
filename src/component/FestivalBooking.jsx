@@ -10,14 +10,44 @@ import ImageCarousel from './ImageCarousel';
 import GovernmentBuses from './Governmentbuses';
 import RedbusApplink from './RedbusApplink';
 import Testimonialsection from './TestimonialSection';
+import { easeIn, easeInOut, motion, stagger } from 'framer-motion';
 
-export default function FestivalBooking() {
+export default function FestivalBooking() { 
+    const container = {
+        hidden: { opacity: 0, y: 50 },
+        show: {
+            opacity: 1,
+            y: 0,
+            transition: {
+                duration: 0.6,
+                ease: "easeOut",
+                staggerChildren: 0.25
+            }
+        }
+    };
+
+    const item = {
+        hidden: { opacity: 0, y: 40 },
+        show: {
+            opacity: 1,
+            y: 0,
+            transition: {
+                duration: 0.6,
+                ease: "easeOut"
+            }
+        }
+    };
 
     return (
-        <div className='flex flex-col gap-4 max-w-7xl mx-auto mb-50px px-4'>
+        <motion.div
+            variants={container}
+            initial="hidden"
+            whileInView="show"
+            className='flex flex-col gap-4 max-w-7xl mx-auto mb-50px px-4'>
             {/* {Festival Booking} */}
-            <article className='mt-4'>
-                <div className='flex gap-3 flex-row my-3 textalign-center align-content-normal'>
+            <motion.article variants={item}
+                className='my-4'>
+                <div className='flex gap-3 flex-row my-3 text-center align-content-normal'>
                     <img src={festivaltrain} alt="#" />
                     <div className='flex flex-col flex-start'>
                         <div className='text-xl font-bold text-black'>Book trains for festival</div>
@@ -67,8 +97,9 @@ export default function FestivalBooking() {
                         </div>
                     </div>
                 </div>
-            </article>
-            <section>
+            </motion.article>
+            <motion.section variants={item} initial="hidden"
+                whileInView="show">
                 <div className='bg-green-300 p-4 lg:!p-2 min-h-[130px] items-center justify-center rounded-xl'>
                     <div className='relative p-2'>
                         <div className='flex lg:flex-row lg:justify-center gap-4 items-center'>
@@ -84,23 +115,27 @@ export default function FestivalBooking() {
                         </div>
                     </div>
                 </div>
-            </section>
-            <section className='mt-4'>
+            </motion.section>
+            <motion.section variants={item} initial="hidden"
+                whileInView="show" className='mt-4'>
                 <OffersCard />
-            </section>
-            <section>
+            </motion.section>
+            <motion.section variants={item} initial="hidden"
+                whileInView="show" >
                 <ImageCarousel />
-            </section>
-            <section>
+            </motion.section>
+            <motion.section variants={item} initial="hidden"
+                whileInView="show" >
                 <GovernmentBuses />
-            </section>
-            {/* Testimonial section */}
-            <section>
+            </motion.section>
+            <motion.section variants={item} initial="hidden"
+                whileInView="show" >
                 <Testimonialsection />
-            </section>
-            <section className='mb-4'>
+            </motion.section>
+            <motion.section variants={item} initial="hidden"
+                whileInView="show" className='mb-4'>
                 <RedbusApplink />
-            </section>
-        </div>
+            </motion.section>
+        </motion.div>
     )
 }
