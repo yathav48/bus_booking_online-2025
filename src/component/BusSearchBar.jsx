@@ -21,7 +21,10 @@ export default function BusSearchBar() {
   const [showDatePicker, setShowDatePicker] = useState(false);
   const [isWomenBooking, setIsWomenBooking] = useState(false);
   const [showWomenModal, setShowWomenModal] = useState(false);
-
+  const formatDate = (date) => {
+    const options = { day: '2-digit', month: 'short', year: 'numeric' };
+    return date.toLocaleDateString('en-GB', options).replace(' ', ' ').replace(' ', ', ');
+  };
 
   const swapCities = () => {
     setFrom(to);
@@ -92,17 +95,17 @@ export default function BusSearchBar() {
                 className="flex items-center justify-between h-12 px-3 cursor-pointer"
               >
                 <div className="flex items-center gap-2">
-                  <AiOutlineCalendar />
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-calendar-days-icon lucide-calendar-days"><path d="M8 2v4" /><path d="M16 2v4" /><rect width="18" height="18" x="3" y="4" rx="2" /><path d="M3 10h18" /><path d="M8 14h.01" /><path d="M12 14h.01" /><path d="M16 14h.01" /><path d="M8 18h.01" /><path d="M12 18h.01" /><path d="M16 18h.01" /></svg>
                   <div className="flex flex-col leading-tight">
-                    <span>Date of Journey</span>
-                    <span className="text-sm text-gray-500">{date.toLocaleDateString()}</span>
+                    <span className="text-gray-500 text-sm">Date of Journey</span>
+                    <span className="text-black text-md font-bold">{formatDate(date)}</span>
                   </div>
                 </div>
               </div>
 
               {/* Inline date picker */}
               {showDatePicker && (
-                <div className="absolute z-50 mt-2">
+                <div className="absolute z-50 mt-2 bg-white shadow-lg">
                   <DatePicker
                     selected={date}
                     onChange={(d) => setDate(d)}

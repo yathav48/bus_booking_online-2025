@@ -17,7 +17,7 @@ export default function Navbarcomponent() {
     console.log('currrentpath:', currentpath);
     return (
         <>
-            <Navbar expand="lg" className="bg-white shadow-sm navbar-main p-0">
+            <Navbar expand="lg" className="bg-white shadow-lg navbar-main p-0">
                 <Container className="d-flex justify-content-between align-items-center px-4 !max-w-7xl">
 
                     <div className="d-flex align-items-center gap-4">

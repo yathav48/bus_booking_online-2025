@@ -20,7 +20,7 @@ export default function Home() {
                             <motion.h1
                                 initial={{ y: 60, opacity: 0 }}
                                 animate={{ y: 0, opacity: 1 }}
-                                transition={{ duration: 0.5, ease: "easeOut" }}>india's no:1 online<br /> bus ticket booking site</motion.h1>
+                                transition={{ duration: 0.8, ease: "easeOut" }}>india's no:1 online<br /> bus ticket booking site</motion.h1>
                         </div>
                     </div>
                 </div>

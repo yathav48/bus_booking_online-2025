@@ -3,6 +3,7 @@ import TrainHomePage from "../pages/TrainHomePage";
 import BusHomePage from "../pages/BusHomePage"
 import Bookingpage from "../pages/Bookingpage";
 import Helppage from "../pages/Helppage"
+import Offerpage from "../pages/Offerpage"
 
 export default function componentload() {
     return (
@@ -12,6 +13,7 @@ export default function componentload() {
             <Route path='/trainpage' element={<TrainHomePage />} />
             <Route path="/bookingpage" element={<Bookingpage />} />
             <Route path="/helppage" element={<Helppage />} />
+            <Route path='/offerpage' element={<Offerpage />} />
         </Routes>
     )
 }

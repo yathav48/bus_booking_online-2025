@@ -6,6 +6,7 @@ import womensicon4 from '../assets/womenpickuptodrop.svg';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import Slider from "react-slick";
+import { motion } from 'framer-motion';
 
 const carouselImages = [
     { id: 1, image: womensicon1 },
@@ -24,7 +25,11 @@ export default function WomenBookingModal({ onClose }) {
 
     return (
         <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50">
-            <div className="bg-white rounded-2xl shadow-lg w-[90%] sm:w-[500px] flex flex-col py-4">
+            <motion.div
+             initial={{ y: 300 }}
+             animate={{ y: 0 }}
+             transition={{ duration: 1, ease: 'easeOut'}}
+             className="bg-white rounded-2xl shadow-lg w-full md:max-w-[450px] flex flex-col py-4 h-fit">
                 <div className="flex justify-end p-3">
                     <button
                         onClick={onClose}
@@ -56,7 +61,7 @@ export default function WomenBookingModal({ onClose }) {
                         </div>
                         <div className="flex py-2 items-center px-4">
                             <button
-                                className="mt-6 w-full bg-red-600 text-white py-2 !rounded-full font-semibold hover:bg-red-700"
+                                className="mt-6 w-full bg-gradient-to-r from-orange-500 via-red-500 to-pink-500 text-white py-2 !rounded-full font-semibold"
                                 onClick={onClose}
                             >
                                 Got it
@@ -64,7 +69,7 @@ export default function WomenBookingModal({ onClose }) {
                         </div>
                     </div>
                 </div>
-            </div>
+            </motion.div>
         </div>
     );
 }
