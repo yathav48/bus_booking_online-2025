@@ -7,6 +7,7 @@ import offer5 from '../assets/offerbustwo.png';
 import offer6 from '../assets/offerbusthree.png';
 import { motion } from "framer-motion";
 import SubpageFooter from "../component/SubpageFooter";
+import { useEffect } from "react";
 
 
 const offerData = [
@@ -24,6 +25,10 @@ const offerData = [
     { id: 12, bgimage: offer6, title: "save upto 500 on primo operators", code: "Use Code PRIMO200" },
 ];
 export default function Offerpage() {
+
+    useEffect(() => {
+        document.title = 'Offers: Bus offers & Coupon Codes / Offers';
+    },[]);
     return (
         <>
         
@@ -33,18 +38,19 @@ export default function Offerpage() {
             </div>
             <div className="max-w-4xl mx-auto">
 
-                <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-2">
+                <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
                     {offerData.map((item) => {
                         return (
                             <motion.div
-                            initial={{ opacity: 0, scale: 0.5 }}
-                            animate={{ opacity: 1, scale: 1 }} 
+                            initial={{ opacity: 0, scale: 0.5, y:20 }}
+                            animate={{ opacity: 1, scale: 1, y:0 }} 
+                            whileHover={{ scale: 1.02, y: -10, boxShadow: "0px 10px 30px rgba(0,0,0,4)" }}
                             transition={{ duration: 0.6 }}
-                              key={item.id}  className="bg-white shadow-lg overflow-hidden p-2 dark:bg-gray-800 hover:scale-95 hover:duration-150 cursor-pointer">
+                              key={item.id}  className="bg-white shadow-lg overflow-hidden p-2 dark:bg-gray-800 cursor-pointer">
                                 <div>
                                 <img src={item.bgimage} alt="" className="object-cover w-full h-full"/>
                                 </div>
-                                <div className="flex flex-col gap-4">
+                                <div className="flex flex-col gap-3">
                                     <div className="px-2 py-2 text-semibold text-black">
                                         {item.title}
                                     </div>
