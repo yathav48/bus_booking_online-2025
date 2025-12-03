@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import AboutContainer from "../component/AboutContainer";
 import BottomNavbar from "../component/BottomNavbar";
 import BusSearchBar from "../component/BusSearchBar";
@@ -8,6 +9,9 @@ import ParagraphContent from "../component/ParagraphContent";
 import { motion } from "framer-motion";
 
 export default function Home() {
+    useEffect(() => {
+        document.title = 'Bus Booking - Online Bus Ticket Booking';
+    })
     return (
         <>
             <div className="homepage-layout">

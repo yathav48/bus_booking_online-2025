@@ -5,9 +5,13 @@ import Bookingpage from "../pages/Bookingpage";
 import Helppage from "../pages/Helppage"
 import Offerpage from "../pages/Offerpage"
 import Loginmodal from "../component/Loginmodal";
+import { Scroll } from "lucide-react";
+import ScrollToTop from "../component/ScrolltoTop";
 
 export default function componentload() {
     return (
+        <>
+        <ScrollToTop />
         <Routes>
             <Route path='/' element={<BusHomePage />} />
             <Route path='/buspage' element={<BusHomePage />} />
@@ -18,5 +22,6 @@ export default function componentload() {
             <Route path="/helppage" element={<Helppage />} />
             <Route path='/offerpage' element={<Offerpage />} />
         </Routes>
+        </>
     )
 }

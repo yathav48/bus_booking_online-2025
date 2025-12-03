@@ -25,6 +25,7 @@ export default {
   content: [
     "./index.html",
     "./src/**/*.{js,ts,jsx,tsx}",
+    // "./node_modules/react-day-picker/dist/**/*.css",
   ],
   theme: {
     extend: {color: {
@@ -36,3 +37,4 @@ export default {
     require('tailwindcss-animate')
   ],
 }
+

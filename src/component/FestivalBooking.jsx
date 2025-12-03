@@ -11,7 +11,7 @@ import GovernmentBuses from './Governmentbuses';
 import RedbusApplink from './RedbusApplink';
 import Testimonialsection from './TestimonialSection';
 import { easeIn, easeInOut, motion, stagger } from 'framer-motion';
-
+import curvywaves from '../assets/waves-2-large.svg';
 export default function FestivalBooking() { 
     const container = {
         hidden: { opacity: 0, y: 50 },
@@ -101,6 +101,7 @@ export default function FestivalBooking() {
             <motion.section variants={item} initial="hidden"
                 whileInView="show">
                 <div className='bg-green-300 p-4 lg:!p-2 min-h-[130px] items-center justify-center rounded-xl'>
+                    
                     <div className='relative p-2'>
                         <div className='flex lg:flex-row lg:justify-center gap-4 items-center'>
                             <div className='flex flex-col text-start gap-2'>

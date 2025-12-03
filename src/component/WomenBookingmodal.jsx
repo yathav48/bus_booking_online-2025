@@ -51,10 +51,10 @@ export default function WomenBookingModal({ onClose }) {
                         </div>
 
                         <div className="px-4 mb-4 items-center">
-                            <Slider {...settings} className="p-4 ">
+                            <Slider {...settings} className="">
                                 {carouselImages.map((item) => (
-                                    <div key={item.id} className="h-49">
-                                        <img src={item.image} alt={`Image ${item.id}`} className="w-full h-full" />
+                                    <div key={item.id} className="!flex items-center justify-center">
+                                        <img src={item.image} alt={`Image ${item.id}`} className="object-cover" />
                                     </div>
                                 ))}
                             </Slider>

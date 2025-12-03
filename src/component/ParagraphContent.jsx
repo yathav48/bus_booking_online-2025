@@ -33,7 +33,7 @@ export default function ParagraphContent() {
                 <div className="text-gray-600 font-bold text-xl py-2">
                     How to Book Bus Tickets and Train Tickets Online on redBus?
                 </div>
-                <p className="my-2">Below are some simple steps that you can follow when booking train or bus tickets online on redBus.</p>
+                <p className="my-2 text-gray-500">Below are some simple steps that you can follow when booking train or bus tickets online on redBus.</p>
                 <div className="mx-4 px-4">
                     <ul className="p-0 list-disc marker:text-gray-500 text-gray-600">
                         <li className="my-2"><strong>Step 1:</strong> Visit the redBus website or app.</li>
@@ -45,6 +45,14 @@ export default function ParagraphContent() {
                         <li className="my-2"><strong>Step 7:</strong> After the successful payment, you will receive a confirmation of your train or bus bookings on your registered email ID or mobile number.</li>
                     </ul>
                 </div>
+            </section>
+            <section>
+                <div className="text-gray-600 font-bold text-xl py-2">
+                    Exclusive Offers on redBus
+                </div>
+                <p className="my-2 text-gray-500">
+                    redBus provides exclusive offers and deals on bus and train ticket booking for travellers. Additionally, you can also get festive offers on apps or specific to bus operators. All you need to do is check train and bus booking offers on redBus and apply the coupon code mentioned on the website or app to avail the discount. redBus keeps adding new discounts and offers depending on the seasonality, festivals, and other events.
+                </p>
             </section>
         </article>
     )

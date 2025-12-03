@@ -24,7 +24,6 @@ export default function Loginmodal({ onClose }) {
                         </div>
                     </div>
                     <div>
-
                         <div className="px-2 flex flex-col gap-2 relative">
                             <div className="flex justify-end py-2">
                                 <button onClick={onClose}>
@@ -46,10 +45,7 @@ export default function Loginmodal({ onClose }) {
                             <div className="text-center">
                                 <span className="text-xs text-bold text-gray-700"><strong>OR,</strong> Connect using social accounts</span>
                             </div>
-                            <button
-                                className="bg-blue-500 text-white py-2 rounded font-semibold"
-                                onClick={() => alert("Logged in!")}
-                            >
+                            <button className="bg-blue-500 text-white py-2 rounded font-semibold">
                                 Sign in with Google
                             </button>
                         </div>
