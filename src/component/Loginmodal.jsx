@@ -39,7 +39,7 @@ export default function Loginmodal({ onClose }) {
                                 placeholder="Enter your phone number"
                                 className="border p-2 rounded"
                             />
-                            <button className="bg-red-300 p-2 !rounded-sm">
+                            <button className="bg-red-300 p-2 rounded-sm!">
                                 <span className="text-white font-bold text-sm">GENERATE OTP (One Time Password)</span>
                             </button>
                             <div className="text-center">

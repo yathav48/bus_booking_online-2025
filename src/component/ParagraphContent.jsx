@@ -1,3 +1,4 @@
+import FAQPara from "./FAQpara";
 
 export default function ParagraphContent() {
     return (
@@ -53,6 +54,11 @@ export default function ParagraphContent() {
                 <p className="my-2 text-gray-500">
                     redBus provides exclusive offers and deals on bus and train ticket booking for travellers. Additionally, you can also get festive offers on apps or specific to bus operators. All you need to do is check train and bus booking offers on redBus and apply the coupon code mentioned on the website or app to avail the discount. redBus keeps adding new discounts and offers depending on the seasonality, festivals, and other events.
                 </p>
+            </section>
+            <section>
+                <div className="pb-4">
+                    <FAQPara />
+                </div>
             </section>
         </article>
     )
