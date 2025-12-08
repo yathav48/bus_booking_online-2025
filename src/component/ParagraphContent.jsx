@@ -1,4 +1,4 @@
-import FAQPara from "./FAQpara";
+import FAQPara from "./FAQPara";
 
 export default function ParagraphContent() {
     return (
