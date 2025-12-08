@@ -10,7 +10,6 @@ html, body {
 
 /* home page style */
 .homepage-bg {
-  background-image: url('D:\yathav2025\Bus-Ticket-Booking\bus-booking\src\assets\HomeBanner.webp');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;

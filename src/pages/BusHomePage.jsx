@@ -8,6 +8,7 @@ import Navbarcomponent from "../component/Navbar";
 import ParagraphContent from "../component/ParagraphContent";
 import { motion } from "framer-motion";
 import femaleicon from '../assets/femaleFunnel.svg';
+import homebanner from '../assets/HomeBanner.webp';
 
 export default function Home() {
     useEffect(() => {
@@ -25,7 +26,7 @@ export default function Home() {
                         <img src={femaleicon} alt="femaleicon" />
                     </i>
                 </div>
-                <div className="homepage-bg relative hidden md:block">
+                <div className="homepage-bg relative hidden md:block" style={{backgroundImage: `url(${homebanner})`}}>
                     <div className="absolute bg-linear inset-0 bg-linear-to-tr from-[rgba(0,0,0,0.7)] to-[rgba(0,0,0,0)]">
                         <div className="text-white text-capitalize max-w-7xl mx-auto px-3 relative top-15 flex justify-center lg:block md:text-center lg:text-left">
                             <motion.div
