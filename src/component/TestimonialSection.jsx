@@ -10,7 +10,7 @@ const carouselData = [
     { id: 2, title: "Perfect Ride. Best bus ever..", name: "Bensha Bennet", year: "redbus customer since 2019" },
     { id: 3, title: "Clean Buses. Great Experience.", name: "Karthik Moorty", year: "redbus customer since 2017" }
 ]
-export default function Testimonialsection() {
+export default function TestimonialSection() {
     const prevRef = useRef(null);
     const nextRef = useRef(null);
     const swiperRef = useRef(null);

@@ -8,7 +8,7 @@ import { format } from "date-fns";
 import { AiOutlineCalendar } from "react-icons/ai";
 import { MdOutlineSwapVert } from "react-icons/md";
 import { MdOutlineDirectionsBus } from "react-icons/md";
-import WomenBookingModal from "./WomenBookingmodal";
+import WomenBookingmodal from "./WomenBookingmodal";
 import { motion } from "framer-motion";
 import CustomDatePicker from "./CustomDatePicker";
 
@@ -162,7 +162,7 @@ export default function BusSearchBar() {
         </button>
       </motion.div>
       {showWomenModal && (
-        <WomenBookingModal onClose={() => setShowWomenModal(false)} />
+        <WomenBookingmodal onClose={() => setShowWomenModal(false)} />
       )}
     </div >
   );

@@ -7,9 +7,9 @@ import { Link } from 'react-router-dom';
 import traditionguys from '../assets/traditionalguys.jpg';
 import OffersCard from './OffersCard';
 import ImageCarousel from './ImageCarousel';
-import GovernmentBuses from './Governmentbuses';
+import GovernmentBuses from './GovernmentBuses';
 import RedbusApplink from './RedbusApplink';
-import Testimonialsection from './TestimonialSection';
+import TestimonialSection from './TestimonialSection';
 import { easeIn, easeInOut, motion, stagger } from 'framer-motion';
 import curvywaves from '../assets/waves-2-large.svg';
 export default function FestivalBooking() { 
@@ -131,7 +131,7 @@ export default function FestivalBooking() {
             </motion.section>
             <motion.section variants={item} initial="hidden"
                 whileInView="show" >
-                <Testimonialsection />
+                <TestimonialSection />
             </motion.section>
             <motion.section variants={item} initial="hidden"
                 whileInView="show" className='mb-4'>

@@ -14,7 +14,7 @@ const carouselImages = [
     { id: 3, image: womensicon3 },
     { id: 4, image: womensicon4 },
 ];
-export default function WomenBookingModal({ onClose }) {
+export default function WomenBookingmodal({ onClose }) {
     const settings = {
         dots: true,
         infinite: false,
