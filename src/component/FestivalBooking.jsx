@@ -1,5 +1,5 @@
 import { MdHeight } from 'react-icons/md';
-import festivaltrain from '../assets/newtrain.svg';
+import festivaltrain from '../assets/newTrain.svg';
 import calender from '../assets/calender-hook.svg';
 import '../component/FestivalBooking.css';
 import { IoMdTrain } from "react-icons/io";
