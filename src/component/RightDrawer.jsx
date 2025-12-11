@@ -3,7 +3,7 @@ import { X } from "lucide-react";
 
 export default function RightDrawer({ open, onOpenChange, children, width = "w-full lg:w-1/3" }) {
   return (
-    <Dialog.Root open={open} onOpenChange={onOpenChange}>
+    <Dialog.Root open={open} onOpenChange={onOpenChange} modal={true}>
       <Dialog.Portal>
 
         {/* BACKDROP */}
@@ -19,6 +19,11 @@ export default function RightDrawer({ open, onOpenChange, children, width = "w-f
             data-[state=closed]:animate-out data-[state=closed]:slide-out-to-right
           `}
         >
+          <Dialog.Title className="sr-only">Account Drawer</Dialog.Title>
+          <Dialog.Description className="sr-only">
+            This drawer contains account information.
+          </Dialog.Description>
+
           {/* Close Button */}
           <div className="flex flex-row justify-between items-center border-b border-gray-200 p-4 mb-4">
 

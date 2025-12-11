@@ -66,7 +66,7 @@ export default function Navbarcomponent() {
                     </Nav>
                 </Container>
             </Navbar>
-            <RightDrawer open={openDrawer} onOpenChange={setOpenDrawer}>
+            <RightDrawer open={openDrawer} onOpenChange={setOpenDrawer} className="w-full xl:w-1/4">
                 <div>
                     <div className='p-4 pb-0'>
                         <div className='text-2xl font-bold text-black mb-4'>Login to manage your booking</div>

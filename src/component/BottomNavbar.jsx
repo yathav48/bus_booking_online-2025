@@ -5,11 +5,15 @@ import Nav from 'react-bootstrap/Nav';
 import { NavLink, useLocation } from 'react-router-dom';
 import { MdHome } from "react-icons/md";
 import './BottomNavbar.css';
+import RightDrawer from "./RightDrawer";
+import { useState } from "react";
+import { MdOutlinePersonOutline } from "react-icons/md";
 
 
 export default function BottomNavbar() {
     const location = useLocation();
     const currentpath = location.pathname;
+    const [openDrawer, setOpenDrawer] = useState(false);
     console.log('currentpath in bottom nav:', currentpath);
     return (
         <>
@@ -39,6 +43,34 @@ export default function BottomNavbar() {
                     <span className="font-semibold text-xs">Account</span>
                 </Nav.Link>
             </Nav>
+            <RightDrawer open={openDrawer} onOpenChange={setOpenDrawer} className="w-full xl:w-1/4">
+                <div>
+                    <div className='p-4 pb-0'>
+                        <div className='text-2xl font-bold text-black mb-4'>Login to manage your booking</div>
+                        <div>
+                            <button className='px-4 py-2 bg-red-600 text-white text-lg font-bold rounded-full! w-full'>Log In</button>
+                        </div>
+                        <div className='py-2'>Don't have an account? <button className="text-black underline ml-2"><strong>Sign Up</strong></button></div>
+                    </div>
+                </div>
+                <div className='flex flex-col'>
+                    <section>
+                        <div className='text-black font-bold text-2xl mb-4 px-4'>My details</div>
+                        <Nav.Link className='py-2 border-b! border-gray-300! px-4 ' to='/bookingpage' onClick={() => setOpenDrawer(false)}>
+                            <div className='flex flex-row items-center gap-4 text-lg font-semibold'>
+                                <i><TfiMenuAlt size={18} /></i>
+                                <span>Bookings</span>
+                            </div>
+                        </Nav.Link>
+                        <Nav.Link className='py-2 border-b border-gray-300 px-4' to='/personalinfo' onClick={() => setOpenDrawer(false)}>
+                            <div className='flex flex-row items-center gap-4 text-lg font-semibold'>
+                                <i><MdOutlinePersonOutline /></i>
+                                <span>Personal information</span>
+                            </div>
+                        </Nav.Link>
+                    </section>
+                </div>
+            </RightDrawer>
         </>
     )
 }

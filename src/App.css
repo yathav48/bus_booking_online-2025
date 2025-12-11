@@ -6,7 +6,9 @@
 
 html, body {
   overflow-x: hidden;
+  /* scrollbar-gutter: stable; */
 }
+
 
 /* home page style */
 .homepage-bg {
