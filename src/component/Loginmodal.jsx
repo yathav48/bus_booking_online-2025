@@ -62,7 +62,7 @@ export default function Loginmodal({ onClose }) {
                                 <div><img src={busicon} alt="" className="w-13 h-13" /></div>
                                 <div className="text-red-500 font-bold text-md">Sign in to avail exciting discounts and cashbacks!!</div>
                             </div>
-                            <div className="hii">
+                            <div>
                                 <FloatingInput label="Email" type="email" 
                                 {...register('email', registerOptions.email)}
                                 value={emailValue} />

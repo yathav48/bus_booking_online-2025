@@ -41,6 +41,23 @@ export default function FloatingInput({ label, error, ...props }) {
             >
                 {label}
             </motion.label>
+            {/* <input
+                {...props}
+                placeholder=" "
+                className="peer w-full border-2 border-gray-400 rounded-lg px-3 py-3 text-base 
+  outline-none focus:border-black transition-all bg-white"
+            />
+
+            <label
+                className="
+    absolute left-3 top-1/2 -translate-y-1/2 text-gray-500
+    transition-all bg-white px-1
+    peer-focus:top-[-1px] peer-focus:text-xs peer-focus:text-black
+    peer-not-placeholder-shown:top-[-1px] peer-not-placeholder-shown:text-xs
+  "
+            >
+                {label}
+            </label> */}
 
         </div>
     );

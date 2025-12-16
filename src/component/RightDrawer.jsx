@@ -13,12 +13,11 @@ export default function RightDrawer({ open, onOpenChange, children, width = "w-f
         <Dialog.Content
           className={`
             fixed top-0 right-0 h-full bg-white shadow-xl outline-0
-
+            z-10
             ${width}
             animate-in slide-in-from-right duration-300
             data-[state=closed]:animate-out data-[state=closed]:slide-out-to-right
-          `}
-        >
+          `}>
           <Dialog.Title className="sr-only">Account Drawer</Dialog.Title>
           <Dialog.Description className="sr-only">
             This drawer contains account information.

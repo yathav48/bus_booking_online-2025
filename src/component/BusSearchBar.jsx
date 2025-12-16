@@ -56,7 +56,7 @@ export default function BusSearchBar() {
             </div>
 
             {/* Swap Button large and medium screen*/}
-            <div className="absolute left-[50%] top-8 lg:left-[33.33%] transform -translate-x-1/2 -translate-y-1/2 z-10 cursor-pointer bg-black/70 rounded-full shadow-lg p-2 md:block hidden"
+            <div className="absolute left-[50%] top-8 lg:left-[33.33%] transform -translate-x-1/2 -translate-y-1/2 cursor-pointer bg-black/70 rounded-full shadow-lg p-2 md:block hidden"
               onClick={() => { swapCities(); }}>
               <span className={`text-white`}> <IoMdSwap className={`text-md transition-transform duration-300 ${
                 isrotating ? 'rotate-180' : 'rotate-0'}`}/> </span>

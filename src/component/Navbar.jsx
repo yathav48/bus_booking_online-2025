@@ -12,11 +12,16 @@ import { useEffect, useState } from 'react';
 import './Navbar.css';
 import RightDrawer from './RightDrawer';
 import { MdOutlinePersonOutline } from "react-icons/md";
+import { IoIosArrowForward } from "react-icons/io";
+import Signinmodal from './Signinmodal';
+import AccountDrawerinfo from './AccountDrawerinfo';
+
 
 export default function Navbarcomponent() {
     const location = useLocation();
     const currentpath = location.pathname;
     const [openDrawer, setOpenDrawer] = useState(false);
+    const [showSignin, setShowSignin] = useState(false);
     console.log('currrentpath:', currentpath);
     return (
         <>
@@ -57,7 +62,7 @@ export default function Navbarcomponent() {
                             <IoMdHelpCircleOutline size={20} />
                             <span>Help</span>
                         </Nav.Link>
-                        <Nav.Link href="#account"
+                        <Nav.Link as='button'
                             onClick={() => setOpenDrawer(true)}
                             className="d-flex align-items-center gap-1">
                             <MdOutlineAccountCircle size={20} />
@@ -66,34 +71,11 @@ export default function Navbarcomponent() {
                     </Nav>
                 </Container>
             </Navbar>
-            <RightDrawer open={openDrawer} onOpenChange={setOpenDrawer} className="w-full xl:w-1/4">
-                <div>
-                    <div className='p-4 pb-0'>
-                        <div className='text-2xl font-bold text-black mb-4'>Login to manage your booking</div>
-                        <div>
-                            <button className='px-4 py-2 bg-red-600 text-white text-lg font-bold rounded-full! w-full'>Log In</button>
-                        </div>
-                        <div className='py-2'>Don't have an account? <button className="text-black underline ml-2"><strong>Sign Up</strong></button></div>
-                    </div>
-                </div>
-                <div className='flex flex-col'>
-                    <section>
-                        <div className='text-black font-bold text-2xl mb-4 px-4'>My details</div>
-                        <Nav.Link className='py-2 border-b! border-gray-300! px-4 ' to='/bookingpage' onClick={() => setOpenDrawer(false)}>
-                            <div className='flex flex-row items-center gap-4 text-lg font-semibold'>
-                                <i><TfiMenuAlt size={18} /></i>
-                                <span>Bookings</span>
-                            </div>
-                        </Nav.Link>
-                        <Nav.Link className='py-2 border-b border-gray-300 px-4' to='/personalinfo' onClick={() => setOpenDrawer(false)}>
-                            <div className='flex flex-row items-center gap-4 text-lg font-semibold'>
-                                <i><MdOutlinePersonOutline /></i>
-                                <span>Personal information</span>
-                            </div>
-                        </Nav.Link>
-                    </section>
-                </div>
-            </RightDrawer>
+            <AccountDrawerinfo
+                openDrawer={openDrawer}
+                setOpenDrawer={setOpenDrawer}
+            />
+            {showSignin && <Signinmodal />}
         </>
     );
 }
