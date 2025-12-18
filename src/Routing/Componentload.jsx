@@ -7,6 +7,7 @@ import Offerpage from "../pages/Offerpage"
 import Loginmodal from "../component/Loginmodal";
 import { Scroll } from "lucide-react";
 import ScrollToTop from "../component/ScrolltoTop";
+import AuthForm from "../component/AuthForm";
 
 export default function componentload() {
     return (
@@ -21,6 +22,7 @@ export default function componentload() {
             </Route>
             <Route path="/helppage" element={<Helppage />} />
             <Route path='/offerpage' element={<Offerpage />} />
+            <Route path='/registration' element={<AuthForm />} />
         </Routes>
         </>
     )

@@ -13,7 +13,7 @@ import './Navbar.css';
 import RightDrawer from './RightDrawer';
 import { MdOutlinePersonOutline } from "react-icons/md";
 import { IoIosArrowForward } from "react-icons/io";
-import Signinmodal from './Signinmodal';
+import Signinmodal from './SigninForm';
 import AccountDrawerinfo from './AccountDrawerinfo';
 
 

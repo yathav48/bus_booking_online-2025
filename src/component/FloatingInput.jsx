@@ -1,32 +1,25 @@
 import { motion } from "framer-motion";
-import { useState } from "react";
+import { useState, forwardRef } from "react";
 
-export default function FloatingInput({ label, error, ...props }) {
+const FloatingInput = forwardRef(({ label, onChange, onBlur, value, ...props }, ref) => {
     const [focused, setFocused] = useState(false);
 
-    const hasValue =
-        (props.value !== undefined && props.value !== "") ||
-        (props.defaultValue !== undefined && props.defaultValue !== "");
+    const hasValue = value !== undefined && value !== "";
 
     const isActive = focused || hasValue;
-
 
     return (
         <div className="relative w-full mt-2">
             <input
-                {...props} 
+                {...props}
+                ref={ref}
+                value={value}
+                onChange={onChange}
+                onBlur={(e) => { setFocused(false); onBlur?.(e); }}
+                onFocus={(e) => setFocused(true)}
                 className="w-full border-2 border-gray-400 rounded-lg px-3 py-3 text-base 
-                   outline-none focus:border-black transition-all bg-white"
-                onFocus={(e) => {
-                    setFocused(true);
-                    props.onFocus?.(e);
-                }}
-                onBlur={(e) => {
-                    setFocused(false);
-                    props.onBlur?.(e);
-                }}
+                outline-none focus:border-black transition-all bg-white"
             />
-
             <motion.label
                 initial={false}
                 animate={{
@@ -41,24 +34,8 @@ export default function FloatingInput({ label, error, ...props }) {
             >
                 {label}
             </motion.label>
-            {/* <input
-                {...props}
-                placeholder=" "
-                className="peer w-full border-2 border-gray-400 rounded-lg px-3 py-3 text-base 
-  outline-none focus:border-black transition-all bg-white"
-            />
-
-            <label
-                className="
-    absolute left-3 top-1/2 -translate-y-1/2 text-gray-500
-    transition-all bg-white px-1
-    peer-focus:top-[-1px] peer-focus:text-xs peer-focus:text-black
-    peer-not-placeholder-shown:top-[-1px] peer-not-placeholder-shown:text-xs
-  "
-            >
-                {label}
-            </label> */}
-
         </div>
     );
-}
+});
+
+export default FloatingInput;

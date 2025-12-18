@@ -32,13 +32,15 @@ export default function Loginmodal({ onClose }) {
         }
     }
     return (
-        <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50">
+        <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-[9999] pointer-events-auto"
+            onClick={onClose}>
             <motion.form
+                onClick={(e) => e.stopPropagation()}
                 onSubmit={handleSubmit(handleerrors)}
                 initial={{ y: 300 }}
                 animate={{ y: 0 }}
                 transition={{ duration: 1, ease: 'easeOut' }}
-                className="bg-white rounded-md shadow-lg w-full md:max-w-2xl flex flex-col p-1 h-fit">
+                className="bg-white rounded-md shadow-lg w-full md:max-w-2xl flex flex-col p-1 h-full md:h-auto">
                 <div className="flex flex-col md:flex-row gap-2">
                     <div className="relative hidden md:block">
                         <img src={loginposter} alt="" />
@@ -54,7 +56,11 @@ export default function Loginmodal({ onClose }) {
                     <div>
                         <div className="px-2 flex flex-col gap-2 relative">
                             <div className="flex justify-end py-2">
-                                <button onClick={onClose}>
+                                <button type="button"
+                                    onClick={(e) => {
+                                        e.stopPropagation();
+                                        onClose();
+                                    }} className="cursor-pointer">
                                     <IoMdClose className="text-2xl" />
                                 </button>
                             </div>
@@ -63,19 +69,19 @@ export default function Loginmodal({ onClose }) {
                                 <div className="text-red-500 font-bold text-md">Sign in to avail exciting discounts and cashbacks!!</div>
                             </div>
                             <div>
-                                <FloatingInput label="Email" type="email" 
-                                {...register('email', registerOptions.email)}
-                                value={emailValue} />
+                                <FloatingInput label="Email" type="email"
+                                    {...register('email', registerOptions.email)}
+                                     />
                                 <div className="bg-none h-4">
-                                {errors.email && <p className="text-red-500 text-sm m-0">{errors.email.message}</p>}
+                                    {errors.email && <p className="text-red-500 text-sm m-0">{errors.email.message}</p>}
                                 </div>
                             </div>
                             <div>
-                                <FloatingInput label="Password" type="password" 
-                                {...register('password', registerOptions.password)} 
-                                value={passwordValue}/>
+                                <FloatingInput label="Password" type="password"
+                                    {...register('password', registerOptions.password)}
+                                     />
                                 <div className="bg-none h-4">
-                                {errors.password && <p className="text-red-500 text-sm m-0">{errors.password.message}</p>}
+                                    {errors.password && <p className="text-red-500 text-sm m-0">{errors.password.message}</p>}
                                 </div>
                             </div>
                             <button type="submit" className="bg-red-400 p-2 rounded-sm! mt-4 hover:bg-red-600">

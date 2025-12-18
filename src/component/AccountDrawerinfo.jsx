@@ -1,14 +1,17 @@
 import RightDrawer from "./RightDrawer"
 import { MdOutlinePersonOutline } from "react-icons/md";
 import { IoIosArrowForward } from "react-icons/io";
-import Signinmodal from './Signinmodal';
+import AuthForm from "./AuthForm";
 import { TfiMenuAlt } from "react-icons/tfi";
 import Nav from 'react-bootstrap/Nav';
 import { useState, useEffect } from "react";
 import Loginmodal from "./Loginmodal";
+import { Link } from "react-router-dom";
+
 export default function AccountDrawerinfo({ openDrawer, setOpenDrawer }) {
     const [showSignin, setShowSignin] = useState(false);
     const [showLogin, setShowLogin] = useState(false);
+    const isModalOpen = showSignin || showLogin;
 
     useEffect(() => {
         if (openDrawer || showSignin) {
@@ -25,7 +28,11 @@ export default function AccountDrawerinfo({ openDrawer, setOpenDrawer }) {
 
     return (
         <div>
-            <RightDrawer open={openDrawer} onOpenChange={setOpenDrawer} className="w-full xl:w-1/4">
+            <RightDrawer
+                open={openDrawer}
+                onOpenChange={isModalOpen ? () => { } : setOpenDrawer}
+                className={`w-full xl:w-1/4 ${isModalOpen ? "pointer-events-none" : "pointer-events-auto"}`}
+            >
                 <div>
                     <div className='p-4 pb-0'>
                         <div className='text-2xl font-bold text-black mb-4'>Login to manage your booking</div>
@@ -34,9 +41,9 @@ export default function AccountDrawerinfo({ openDrawer, setOpenDrawer }) {
                                 onClick={() => setShowLogin(true)}
                                 className='px-4 py-2 bg-red-600 text-white text-lg font-bold rounded-full! w-full'>Log In</button>
                         </div>
-                        <div className='py-2'>Don't have an account? <button className="text-black underline ml-2"
+                        <div className='py-2'>Don't have an account? <Link to='/registration' className="text-black underline ml-2"
                             onClick={() => setShowSignin(true)}>
-                            <strong>Sign Up</strong></button></div>
+                            <strong>Sign Up</strong></Link></div>
                     </div>
                 </div>
                 <div className='flex flex-col'>
@@ -67,7 +74,7 @@ export default function AccountDrawerinfo({ openDrawer, setOpenDrawer }) {
                     </section>
                 </div>
             </RightDrawer>
-            {showSignin && (
+            {/* {showSignin && (
                 <Signinmodal
                     onClose={() => setShowSignin(false)}
                     openAccountDrawer={() => {
@@ -75,7 +82,7 @@ export default function AccountDrawerinfo({ openDrawer, setOpenDrawer }) {
                         setOpenDrawer(true);
                     }}
                 />
-            )}
+            )} */}
             {showLogin && (
                 <Loginmodal
                     onClose={() => setShowLogin(false)}

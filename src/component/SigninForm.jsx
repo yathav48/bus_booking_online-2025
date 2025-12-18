@@ -4,7 +4,7 @@ import { useForm } from "react-hook-form";
 import { pattern } from "framer-motion/client";
 import { BiSolidError } from "react-icons/bi";
 
-export default function Signinmodal({ onClose, openAccountDrawer }) {
+export default function SigninForm({ onClose, openAccountDrawer }) {
     const { register, handleSubmit, watch, formState: { errors } } = useForm();
     const handleerrors = (errors) => { };
     const emailValue = watch("email");
@@ -38,14 +38,22 @@ export default function Signinmodal({ onClose, openAccountDrawer }) {
         },
     }
     return (
-        <div className="fixed inset-0 bg-black/50 z-[200] flex items-center justify-center">
-            <form onSubmit={handleSubmit(handleerrors)}
+        <div
+            onClick={onClose}
+            className="fixed inset-0 bg-black/50 z-[200] flex items-center justify-center">
+            <form
+                onClick={(e) => e.stopPropagation()}
+                onSubmit={handleSubmit(handleerrors)}
                 className="bg-white rounded-xl w-full max-w-sm p-4">
                 <div className="flex items-center justify-between">
                     <button onClick={openAccountDrawer}>
                         ←
                     </button>
-                    <button onClick={onClose} className="p-2 cursor-pointer"><IoMdClose className="text-2xl" /></button>
+                    <button type="button"
+                        onClick={(e) => {
+                            e.stopPropagation();
+                            onClose();
+                        }} className="cursor-pointer p-2"><IoMdClose className="text-2xl" /></button>
                 </div>
                 <div className="flex flex-col items-center gap-4">
                     <h2 className="text-lg font-bold">Sign In</h2>
@@ -56,7 +64,7 @@ export default function Signinmodal({ onClose, openAccountDrawer }) {
                                 {...register("username", registerOptions.username)}
                                 className="border-b border-gray-500 px-2 py-2 text-base outline-none focus:border-black transition-all" />
                         </div>
-                        <div className="h-4">{errors.username && <span className="text-red-500 text-sm flex gap-1"><i className="pt-1"><BiSolidError size={13}/></i><p className="m-0">{errors.username.message}</p></span>}</div>
+                        <div className="h-4">{errors.username && <span className="text-red-500 text-sm flex gap-1"><i className="pt-1"><BiSolidError size={13} /></i><p className="m-0">{errors.username.message}</p></span>}</div>
                     </section>
                     <section className="w-full">
                         <div className="flex flex-col w-full">
