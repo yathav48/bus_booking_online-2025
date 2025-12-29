@@ -1,95 +1,5 @@
-// import React, { useState } from 'react';
 
-// const AuthForm = () => {
-//   const [isActive, setIsActive] = useState(false);
-
-//   return (
-//     <div className="flex justify-center items-center min-h-screen bg-[#25252b] font-['Poppins'] overflow-hidden">
-//       <div className={`container relative w-[750px]! h-[450px] border-2 border-[#e46033] shadow-[0_0_25px_#e46033] overflow-hidden ${isActive ? 'active' : ''}`}>
-        
-//         {/* Curved Shapes */}
-//         <div className={`absolute right-0 -top-[5px] h-[600px] w-[850px] bg-gradient-to-r from-[#25252b] to-[#e46033] origin-bottom-right transition-all duration-[1.5s] ease-in-out z-10 
-//           ${isActive ? 'rotate-0 skew-y-0 delay-[0.5s]' : 'rotate-[10deg] skew-y-[40deg] delay-[1.6s]'}`}>
-//         </div>
-        
-//         <div className={`absolute left-[250px] top-full h-[700px] w-[850px] bg-[#25252b] border-t-2 border-[#e46033] origin-bottom-left transition-all duration-[1.5s] ease-in-out z-10
-//           ${isActive ? 'rotate-[-11deg] skew-y-[-41deg] delay-[1.2s]' : 'rotate-0 skew-y-0 delay-[0.5s]'}`}>
-//         </div>
-
-//         {/* LOGIN FORM */}
-//         <div className={`absolute top-0 left-0 w-1/2 h-full flex flex-col justify-center px-10 transition-all duration-700 z-20 
-//           ${isActive ? 'translate-x-[-120%] opacity-0' : 'translate-x-0 opacity-100'}`}>
-//           <h2 className="text-3xl text-center text-white mb-6">Login</h2>
-//           <form className="space-y-6">
-//             <div className="relative border-b-2 border-white focus-within:border-[#e46033]">
-//               <input type="text" required className="w-full bg-transparent border-none outline-none text-white py-2 peer" />
-//               <label className="absolute left-0 top-1/2 -translate-y-1/2 text-white transition-all peer-focus:-top-2 peer-valid:-top-2 peer-focus:text-[#e46033] peer-valid:text-[#e46033]">Username</label>
-//             </div>
-//             <div className="relative border-b-2 border-white focus-within:border-[#e46033]">
-//               <input type="password" required className="w-full bg-transparent border-none outline-none text-white py-2 peer" />
-//               <label className="absolute left-0 top-1/2 -translate-y-1/2 text-white transition-all peer-focus:-top-2 peer-valid:-top-2 peer-focus:text-[#e46033] peer-valid:text-[#e46033]">Password</label>
-//             </div>
-//             <button className="w-full h-11 border-2 border-[#e46033] rounded-full text-white font-semibold relative overflow-hidden group">
-//               <span className="relative z-10">Login</span>
-//               <div className="absolute inset-0 bg-gradient-to-b from-[#25252b] via-[#e46033] to-[#25252b] translate-y-[-100%] group-hover:translate-y-0 transition-transform duration-500"></div>
-//             </button>
-//             <p className="text-sm text-center text-white mt-4">
-//               Don't have an account? <br />
-//               <button type="button" onClick={() => setIsActive(true)} className="text-[#e46033] font-semibold hover:underline">Sign Up</button>
-//             </p>
-//           </form>
-//         </div>
-
-//         {/* INFO CONTENT LOGIN */}
-//         <div className={`absolute top-0 right-0 w-1/2 h-full flex flex-col justify-center text-right pr-10 pl-36 transition-all duration-700 z-20 
-//           ${isActive ? 'translate-x-[120%] opacity-0' : 'translate-x-0 opacity-100'}`}>
-//           <h2 className="text-4xl font-bold text-white uppercase leading-tight">Welcome Back!</h2>
-//           <p className="text-white mt-2">We are happy to have you with us again.</p>
-//         </div>
-
-//         {/* REGISTER FORM */}
-//         <div className={`absolute top-0 right-0 w-1/2 h-full flex flex-col justify-center px-10 transition-all duration-700 z-20
-//           ${isActive ? 'translate-x-0 opacity-100' : 'translate-x-[120%] opacity-0'}`}>
-//           <h2 className="text-3xl text-center text-white mb-6">Register</h2>
-//           <form className="space-y-4">
-//             <div className="relative border-b-2 border-white focus-within:border-[#e46033]">
-//               <input type="text" required className="w-full bg-transparent border-none outline-none text-white py-2 peer" />
-//               <label className="absolute left-0 top-1/2 -translate-y-1/2 text-white transition-all peer-focus:-top-2 peer-valid:-top-2">Username</label>
-//             </div>
-//             <div className="relative border-b-2 border-white focus-within:border-[#e46033]">
-//               <input type="email" required className="w-full bg-transparent border-none outline-none text-white py-2 peer" />
-//               <label className="absolute left-0 top-1/2 -translate-y-1/2 text-white transition-all peer-focus:-top-2 peer-valid:-top-2">Email</label>
-//             </div>
-//             <div className="relative border-b-2 border-white focus-within:border-[#e46033]">
-//               <input type="password" required className="w-full bg-transparent border-none outline-none text-white py-2 peer" />
-//               <label className="absolute left-0 top-1/2 -translate-y-1/2 text-white transition-all peer-focus:-top-2 peer-valid:-top-2">Password</label>
-//             </div>
-//             <button className="w-full h-11 border-2 border-[#e46033] rounded-full text-white font-semibold relative overflow-hidden group">
-//               <span className="relative z-10">Register</span>
-//               <div className="absolute inset-0 bg-gradient-to-b from-[#25252b] via-[#e46033] to-[#25252b] translate-y-[-100%] group-hover:translate-y-0 transition-transform duration-500"></div>
-//             </button>
-//             <p className="text-sm text-center text-white mt-4">
-//               Already have an account? <br />
-//               <button type="button" onClick={() => setIsActive(false)} className="text-[#e46033] font-semibold hover:underline">Sign In</button>
-//             </p>
-//           </form>
-//         </div>
-
-//         {/* INFO CONTENT REGISTER */}
-//         <div className={`absolute top-0 left-0 w-1/2 h-full flex flex-col justify-center text-left pl-10 pr-36 transition-all duration-700 z-20 
-//           ${isActive ? 'translate-x-0 opacity-100' : 'translate-x-[-120%] opacity-0'}`}>
-//           <h2 className="text-4xl font-bold text-white uppercase leading-tight">Welcome!</h2>
-//           <p className="text-white mt-2">We’re delighted to have you here.</p>
-//         </div>
-
-//       </div>
-//     </div>
-//   );
-// };
-
-// export default AuthForm;
-
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 
 // Letter by letter animation for titles
@@ -124,6 +34,9 @@ const InputField = ({ label, type }) => (
 
 const AuthForm = () => {
   const [isRegister, setIsRegister] = useState(false);
+  useEffect(() => {
+    document.title = 'Login / Register - Bus Ticket Booking';
+  })
 
   return (
     <div className="flex justify-center items-center min-h-screen bg-[#25252b] font-['Poppins'] overflow-hidden">

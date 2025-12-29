@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import femaleicon from '../assets/female.svg';
 import { Link } from "react-router-dom";
 import { IoMdSwap } from "react-icons/io";
@@ -11,21 +11,55 @@ import { MdOutlineDirectionsBus } from "react-icons/md";
 import WomenBookingmodal from "./WomenBookingmodal";
 import { motion } from "framer-motion";
 import CustomDatePicker from "./CustomDatePicker";
+import { useNavigate } from "react-router-dom";
+import { useSearch } from "../contexts/SearchContext";
+import { useSearchParams } from "react-router-dom";
 
-
-export default function BusSearchBar() {
-  const [from, setFrom] = useState("");
-  const [to, setTo] = useState("");
+export default function BusSearchBar()
+ {
+  const navigate = useNavigate();
+  const [searchParams] = useSearchParams();
+  const { searchData, setSearchData } = useSearch();
+  const { from, to, date, womenBooking } = searchData;
   const [isrotating, setIsrotating] = useState(false);
-  const [selected, setSelected] = useState(new Date());
-  const [isWomenBooking, setIsWomenBooking] = useState(false);
   const [showWomenModal, setShowWomenModal] = useState(false);
 
 
-  const swapCities = () => {
-    setFrom(to);
-    setTo(from);
+  const handleSearch = () => {
+    if (!from || !to) {
+      alert("Please enter From and To");
+      return;
+    }
+    navigate(
+      `/search?from=${encodeURIComponent(from)}&to=${encodeURIComponent(to)}&date=${date || ""}`
+    );
   };
+
+  useEffect(() => {
+  const fromQ = searchParams.get("from");
+  const toQ = searchParams.get("to");
+  const dateQ = searchParams.get("date");
+
+  if (fromQ || toQ || dateQ) {
+    setSearchData(prev => ({
+      ...prev,
+      from: fromQ || "",
+      to: toQ || "",
+      date: dateQ || null
+    }));
+  }
+}, []);
+
+  const swapCities = () => {
+    setIsrotating(true);
+    setSearchData({
+      ...searchData,
+      from: to,
+      to: from
+    });
+    setTimeout(() => setIsrotating(false), 300);
+  };
+
 
   return (
     <div className="relative md:px-4! -mt-16 max-w-7xl mx-auto bottom-14 bussearch-container">
@@ -48,7 +82,7 @@ export default function BusSearchBar() {
                 <input
                   type="text"
                   value={from}
-                  onChange={(e) => setFrom(e.target.value)}
+                  onChange={(e) => setSearchData({ ...searchData, from: e.target.value })}
                   placeholder="From"
                   className="w-full h-12 p-2 focus:outline-none"
                 />
@@ -58,8 +92,7 @@ export default function BusSearchBar() {
             {/* Swap Button large and medium screen*/}
             <div className="absolute left-[50%] top-8 lg:left-[33.33%] transform -translate-x-1/2 -translate-y-1/2 cursor-pointer bg-black/70 rounded-full shadow-lg p-2 md:block hidden"
               onClick={() => { swapCities(); }}>
-              <span className={`text-white`}> <IoMdSwap className={`text-md transition-transform duration-300 ${
-                isrotating ? 'rotate-180' : 'rotate-0'}`}/> </span>
+              <span className={`text-white`}> <IoMdSwap className={`text-md transition-transform duration-300 ${isrotating ? 'rotate-180' : 'rotate-0'}`} /> </span>
             </div>
 
             {/* Swap Button small screen*/}
@@ -78,7 +111,7 @@ export default function BusSearchBar() {
                 <input
                   type="text"
                   value={to}
-                  onChange={(e) => setTo(e.target.value)}
+                  onChange={(e) => setSearchData({ ...searchData, to: e.target.value })}
                   placeholder="To"
                   className="w-full h-12 p-2 focus:outline-none"
                 />
@@ -113,8 +146,8 @@ export default function BusSearchBar() {
                 </div>
               )} */}
               <CustomDatePicker
-                selected={selected}
-                onSelect={(date) => setSelected(date)}
+                selected={date}
+                onSelect={(d) => setSearchData({ ...searchData, date: d })}
               />
             </div>
 
@@ -136,24 +169,27 @@ export default function BusSearchBar() {
               <button
                 type="button"
                 onClick={() => {
-                  setIsWomenBooking(!isWomenBooking);
-                  if (!isWomenBooking) {
+                  const newValue = !womenBooking;
+                  setSearchData({ ...searchData, womenBooking: newValue });
+                  if (!womenBooking) {
                     setShowWomenModal(true);
                   }
                 }}
                 className={`relative w-14 h-8 flex items-center transition-colors duration-300 rounded-full! border-3 border-gray-600
-              ${isWomenBooking ? 'bg-red-600 border-none' : 'bg-gray-300'}`}
+              ${womenBooking ? 'bg-red-600 border-none' : 'bg-gray-300'}`}
               >
                 <span
                   className={`w-4 h-4 bg-gray-600 rounded-full shadow-md transform transition-transform duration-300
-              ${isWomenBooking ? 'translate-x-7 bg-white w-6 h-6' : 'translate-x-1'}`}
+              ${womenBooking ? 'translate-x-7 bg-white w-6 h-6' : 'translate-x-1'}`}
                 />
               </button>
             </div>
           </div>
         </div>
         {/* Search Button */}
-        <button className="absolute left-1/2 -translate-x-1/2 translate-y-1/2
+        <button
+          onClick={handleSearch}
+          className="absolute left-1/2 -translate-x-1/2 translate-y-1/2
                      w-full sm:w-80 h-12 text-white px-4 md:px-0!">
           <div className="flex items-center justify-center gap-2 bg-red-700 w-full h-12 hover:bg-primary-dark transition-colors shadow-lg rounded-full">
             <span className="material-symbols-outlined">search</span>

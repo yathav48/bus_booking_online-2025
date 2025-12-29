@@ -11,7 +11,7 @@ import GovernmentBuses from './GovernmentBuses';
 import RedbusApplink from './RedbusApplink';
 import TestimonialSection from './TestimonialSection';
 import { easeIn, easeInOut, motion, stagger } from 'framer-motion';
-import curvywaves from '../assets/waves-2-large.svg';
+
 export default function FestivalBooking() { 
     const container = {
         hidden: { opacity: 0, y: 50 },

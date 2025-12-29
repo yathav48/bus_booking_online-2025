@@ -76,7 +76,7 @@ const FAQPara = () => {
       </div>
 
       {/* Tabs */}
-      <div className="flex border-b border-gray-300">
+      <div className="flex border-b border-gray-300 overflow-x-auto scrollbar-hide">
         {tabs.map((tab) => (
           <button
             key={tab}

@@ -5,6 +5,7 @@ import AuthForm from "./AuthForm";
 import { TfiMenuAlt } from "react-icons/tfi";
 import Nav from 'react-bootstrap/Nav';
 import { useState, useEffect } from "react";
+import { useLocation } from "react-router-dom";
 import Loginmodal from "./Loginmodal";
 import { Link } from "react-router-dom";
 
@@ -13,24 +14,29 @@ export default function AccountDrawerinfo({ openDrawer, setOpenDrawer }) {
     const [showLogin, setShowLogin] = useState(false);
     const isModalOpen = showSignin || showLogin;
 
-    useEffect(() => {
-        if (openDrawer || showSignin) {
-            document.body.style.overflow = "hidden";
-        } else {
-            document.body.style.overflow = "auto";
-        }
+    // useEffect(() => {
+    //     if (openDrawer || showSignin) {
+    //         document.body.style.overflow = "hidden";
+    //     } else {
+    //         document.body.style.overflow = "auto";
+    //     }
+    //     return () => {
+    //         document.body.style.overflow = "auto";
+    //     };
+    // }, [openDrawer, showSignin]);
+    const location = useLocation();
 
-        // cleanup (important)
-        return () => {
-            document.body.style.overflow = "auto";
-        };
-    }, [openDrawer, showSignin]);
+    useEffect(() => {
+        setOpenDrawer(false);
+        setShowSignin(false);
+        setShowLogin(false);
+    }, [location.pathname]);
 
     return (
         <div>
             <RightDrawer
                 open={openDrawer}
-                onOpenChange={isModalOpen ? () => { } : setOpenDrawer}
+                onOpenChange={setOpenDrawer}
                 className={`w-full xl:w-1/4 ${isModalOpen ? "pointer-events-none" : "pointer-events-auto"}`}
             >
                 <div>
@@ -41,7 +47,7 @@ export default function AccountDrawerinfo({ openDrawer, setOpenDrawer }) {
                                 onClick={() => setShowLogin(true)}
                                 className='px-4 py-2 bg-red-600 text-white text-lg font-bold rounded-full! w-full'>Log In</button>
                         </div>
-                        <div className='py-2'>Don't have an account? <Link to='/registration' className="text-black underline ml-2"
+                        <div className='py-2'>Don't have an account? <Link to='/registration' target="_blank" rel="noopener noreferrer" className="text-black underline ml-2"
                             onClick={() => setShowSignin(true)}>
                             <strong>Sign Up</strong></Link></div>
                     </div>

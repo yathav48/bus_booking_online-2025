@@ -5,12 +5,15 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import "react-day-picker/dist/style.css";
 import './index.css'
 import { BrowserRouter } from 'react-router-dom';
+import { SearchProvider } from "./contexts/SearchContext";
 
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
     <BrowserRouter>
-      <App />
+      <SearchProvider>
+        <App />
+      </SearchProvider>
     </BrowserRouter>
   </StrictMode>,
 )
