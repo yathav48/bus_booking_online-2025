@@ -1,75 +1,158 @@
 const buses = [
   {
     id: 1,
-    operator: "SRM Travels",
-    from: "Chennai",
-    to: "Bangalore",
+    operator: "IntrCity SmartBus",
+
+    route: {
+      from: "Thoothukudi",
+      to: "Chennai"
+    },
+
+    busType: "SEATER", // SEATER | SLEEPER | MIXED
+
+    comfort: {
+      ac: true,        // true = AC, false = Non-AC
+      pushBack: true,
+      chargingPoint: true,
+      blanket: false
+    },
+
+    layoutConfig: {
+      arrangement: "2+1",
+      singleSeatSide: "LEFT", // LEFT or RIGHT
+      rows: 11,
+      decks: ["LOWER"]        // LOWER | UPPER | BOTH
+    },
+
+    pricing: {
+      baseFare: 549,
+      upperDeckExtra: 200
+    },
     departureTime: "22:30",
-    arrivalTime: "05:30",
-    duration: "7h",
-    price: 850,
-    seatsAvailable: 12,
-    busType: "AC Sleeper"
+    arrivalTime: "23:30",
   },
   {
     id: 2,
-    operator: "KPN Travels",
-    from: "Chennai",
-    to: "Bangalore",
-    departureTime: "21:00",
-    arrivalTime: "04:00",
-    duration: "7h",
-    price: 780,
-    seatsAvailable: 5,
-    busType: "Non-AC Seater"
+    operator: "RedBus Luxury",
+
+    route: {
+      from: "Chennai",
+      to: "Coimbatore"
+    },
+
+    busType: "SLEEPER", // SEATER | SLEEPER | MIXED
+
+    comfort: {
+      ac: true,        // true = AC, false = Non-AC
+      pushBack: true,
+      chargingPoint: true,
+      blanket: false
+    },
+
+    layoutConfig: {
+      arrangement: "2+1",
+      singleSeatSide: "LEFT", // LEFT or RIGHT
+      rows: 6,
+      decks: ["LOWER", "UPPER"]        // LOWER | UPPER | BOTH
+    },
+
+    pricing: {
+      baseFare: 1100,
+      upperDeckExtra: 200
+    },
+    departureTime: "08:00",
+    arrivalTime: "12:00",
   },
   {
     id: 3,
-    operator: "Parveen Travels",
-    from: "Chennai",
-    to: "Coimbatore",
-    departureTime: "23:45",
-    arrivalTime: "06:45",
-    duration: "7h",
-    price: 920,
-    seatsAvailable: 8,
-    busType: "AC Sleeper"
+    operator: "BlueLine Travels",
+
+    route: {
+      from: "Chennai",
+      to: "Coimbatore"
+    },
+
+    busType: "SEATER", // SEATER | SLEEPER | MIXED
+
+    comfort: {
+      ac: true,        // true = AC, false = Non-AC
+      pushBack: true,
+      chargingPoint: true,
+      blanket: false
+    },
+
+    layoutConfig: {
+      arrangement: "2+1",
+      singleSeatSide: "LEFT", // LEFT or RIGHT
+      rows: 6,
+      decks: ["LOWER", "UPPER"]        // LOWER | UPPER | BOTH
+    },
+
+    pricing: {
+      baseFare: 549,
+      upperDeckExtra: 200
+    },
+    departureTime: "09:00",
+    arrivalTime: "13:00",
   },
   {
     id: 4,
-    operator: "SRM Travels",
-    from: "Chennai",
-    to: "Coimbatore",
-    departureTime: "22:45",
-    arrivalTime: "07:45",
-    duration: "7h",
-    price: 1220,
-    seatsAvailable: 5,
-    busType: "Non-AC Sleeper"
+    operator: "RedLine Travels",
+
+    route: {
+      from: "Chennai",
+      to: "Coimbatore"
+    },
+
+    busType: "SEATER", // SEATER | SLEEPER | MIXED
+
+    comfort: {
+      ac: false,        // true = AC, false = Non-AC
+      pushBack: true,
+      chargingPoint: true,
+      blanket: false
+    },
+
+    layoutConfig: {
+      arrangement: "2+1",
+      singleSeatSide: "LEFT", // LEFT or RIGHT
+      rows: 11,
+      decks: ["LOWER"]        // LOWER | UPPER | BOTH
+    },
+
+    pricing: {
+      baseFare: 999,
+      upperDeckExtra: 200
+    },
+    departureTime: "14:00",
+    arrivalTime: "18:00",
   },
   {
     id: 5,
-    operator: "SRS Travels",
-    from: "Chennai",
-    to: "Coimbatore",
-    departureTime: "08:45",
-    arrivalTime: "13:45",
-    duration: "5h",
-    price: 950,
-    seatsAvailable: 10,
-    busType: "Non-AC Seater"
-  },
-  {
-    id: 6,
-    operator: "RSM Travels",
-    from: "Chennai",
-    to: "Coimbatore",
-    departureTime: "09:00",
-    arrivalTime: "16:00",
-    duration: "8h",
-    price: 1500,
-    seatsAvailable: 18,
-    busType: "Non-AC"
+    operator: "yellow Travels",
+    route: {
+      from: "Chennai",
+      to: "Coimbatore"
+    },    
+    busType: "MIXED", // SEATER | SLEEPER | MIXED
+    comfort: {
+      ac: false,        // true = AC, false = Non-AC
+      pushBack: true,
+      chargingPoint: true,
+      blanket: false
+    },
+    layoutConfig: {
+      arrangement: "2+1",
+      singleSeatSide: "RIGHT", // LEFT or RIGHT
+      rows: 11,
+      decks: ["LOWER"]        // LOWER | UPPER | BOTH
+    },
+    pricing: {
+      baseFare: 1299,
+      upperDeckExtra: 200
+    },
+    departureTime: "15:00",
+    arrivalTime: "19:00",
   }
 ];
 

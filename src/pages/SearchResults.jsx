@@ -26,19 +26,17 @@ function SearchResults() {
   const [selectedBus, setSelectedBus] = useState(null);
   const [isSeatOpen, setIsSeatOpen] = useState(false);
 
-  if (!from || !to) {
-    return (
-      <div className="p-6 text-center">
-        No search data found.
-      </div>
-    );
-  }
+  const filteredBuses = buses.filter((bus) => {
+    const busFrom = bus.route?.from?.toLowerCase().trim();
+    const busTo = bus.route?.to?.toLowerCase().trim();
 
-  const filteredBuses = buses.filter(
-    (bus) =>
-      bus.from.toLowerCase().trim() === from.toLowerCase().trim() &&
-      bus.to.toLowerCase().trim() === to.toLowerCase().trim()
-  );
+    if (!busFrom || !busTo) return false;
+
+    return (
+      busFrom === from.toLowerCase().trim() &&
+      busTo === to.toLowerCase().trim()
+    );
+  });
 
   const handleViewSeats = (bus) => {
     setSelectedBus(bus);
@@ -55,16 +53,16 @@ function SearchResults() {
   const [sortedBuses, setSortedBuses] = useState(filteredBuses);
 
   const visibleBuses = sortedBuses.filter((bus) => {
-    const type = bus.busType.toLowerCase();
+    const type = bus.busType?.toLowerCase() || "";
 
-    const isAC = type.includes("ac") && !type.includes("non");
-    const isNonAC = type.includes("non");
+    const isAC = bus.comfort?.ac === true;
+    const isNonAC = bus.comfort?.ac === false;
 
-    // AC filter
+    //filtering logic
     if (filters.ac && !isAC) return false;
-
-    // Non-AC filter
     if (filters.nonAc && !isNonAC) return false;
+    if (filters.sleeper && bus.busType !== "SLEEPER") return false;
+    if (filters.seater && bus.busType !== "SEATER") return false;
 
     // Morning / Night filter
     const hour = parseInt(bus.departureTime.split(":")[0], 10);
@@ -81,10 +79,17 @@ function SearchResults() {
     document.title = `${from} to ${to} | Bus Ticket Booking`;
   }, [from, to]);
 
+  // const sortByPrice = () => {
+  //   const sorted = [...sortedBuses].sort((a, b) => a.price - b.price);
+  //   setSortedBuses(sorted);
+  // };
   const sortByPrice = () => {
-    const sorted = [...sortedBuses].sort((a, b) => a.price - b.price);
+    const sorted = [...sortedBuses].sort(
+      (a, b) => a.pricing.baseFare - b.pricing.baseFare
+    );
     setSortedBuses(sorted);
   };
+
 
   const sortByDeparture = () => {
     const sorted = [...sortedBuses].sort(
@@ -93,12 +98,12 @@ function SearchResults() {
     setSortedBuses(sorted);
   };
 
-  const sortBySeats = () => {
-    const sorted = [...sortedBuses].sort(
-      (a, b) => b.seatsAvailable - a.seatsAvailable
-    );
-    setSortedBuses(sorted);
-  };
+  // const sortBySeats = () => {
+  //   const sorted = [...sortedBuses].sort(
+  //     (a, b) => b.seatsAvailable - a.seatsAvailable
+  //   );
+  //   setSortedBuses(sorted);
+  // };
 
   const handleSort = (sortType) => {
     switch (sortType) {
@@ -118,10 +123,11 @@ function SearchResults() {
 
   return (
     <motion.div
-      initial={{ x: 400, opacity: 0 }}
-      animate={{ x: 0, opacity: 1 }}
-      transition={{ duration: 1.2, ease: "easeOut" }}
-      className="my-2">
+      initial={{ x: '100%' }}
+      animate={{ x: 0 }}
+      exit={{ x: '100%' }}
+      transition={{ type: 'tween', duration: 0.9 }}
+      className="my-2 bg-white min-h-screen">
       <div className="max-w-7xl mx-auto px-4">
 
         <div className="flex items-center gap-4 border-b border-gray-300 pb-3 mb-4">
@@ -156,53 +162,78 @@ function SearchResults() {
         <div className="flex flex-col lg:flex-row gap-4 h-[80vh] max-w-7xl mx-auto scrollbar-hidden px-4 py-4">
 
           {/* LEFT FILTER PANEL (NO SCROLL) */}
-          <div className="w-full lg:w-1/4 shrink-0 border border-gray-300 rounded-lg p-4 bg-gray-100 shadow-lg">
-            <h3 className="font-semibold mb-3">Filters</h3>
+          <div className="w-full lg:w-1/4 shrink-0 border border-gray-300 rounded-lg p-4 bg-gray-100 shadow-lg flex flex-col">
+            <div className="flex flex-row justify-between border-b border-gray-300">
+              <div className="font-bold mb-3 text-black text-2xl">Filter buses</div>
+              <div>
+                <button className="text-black underline px-2 py-1"
+                  onClick={() => setFilters({ ac: false, nonAc: false, sleeper: false, seater: false, morning: false, night: false })}>
+                  Clear all
+                </button>
+              </div>
+            </div>
+            <div className="flex flex-row mt-2 gap-4 overflow-x-auto scrollbar-hide lg:flex-col!">
+              <div className="flex items-center gap-2 mb-2">
+                <button className={`px-4 py-1 border rounded-lg! 
+               ${filters.ac
+                    ? "bg-red-500 text-white border-red-500"
+                    : "bg-white text-black border-gray-400"
+                  }`}
+                  onClick={() => setFilters({ ...filters, ac: !filters.ac })}>
+                  AC</button>
+              </div>
+              <div className="flex items-center gap-2 mb-2">
+                <button className={`px-4 py-1 border rounded-lg!
+    ${filters.nonAc
+                    ? "bg-red-500 text-white border-red-500"
+                    : "bg-white text-black border-gray-400"
+                  }`}
+                  onClick={() => setFilters({ ...filters, nonAc: !filters.nonAc })}>
+                  Non-AC</button>
+              </div>
+              <div className="flex items-center gap-2 mb-2">
+                <button className={`px-4 py-1 border rounded-lg!
+    ${filters.sleeper
+                    ? "bg-red-500 text-white border-red-500"
+                    : "bg-white text-black border-gray-400"
+                  }`}
+                  onClick={() => setFilters({ ...filters, sleeper: !filters.sleeper })}>
+                  Sleeper</button>
+              </div>
+              <div className="flex items-center gap-2 mb-2">
+                <button className={`px-4 py-1 border rounded-lg! 
+    ${filters.seater
+                    ? "bg-red-500 text-white border-red-500"
+                    : "bg-white text-black border-gray-400"
+                  }`}
+                  onClick={() => setFilters({ ...filters, seater: !filters.seater })}>
+                  Seater</button>
+              </div>
+              <div className="flex items-center gap-2 mb-2">
+                <button className={`px-4 py-1 border rounded-lg! 
+    ${filters.morning
+                    ? "bg-red-500 text-white border-red-500"
+                    : "bg-white text-black border-gray-400"
+                  }`}
+                  onClick={() => setFilters({ ...filters, morning: !filters.morning })}>
+                  <div>
+                    (5 AM – 12 PM)
+                  </div>
+                  <div>Moring</div>
+                </button>
+              </div>
 
-            <label className="flex items-center gap-2 mb-2">
-              <input
-                type="checkbox"
-                checked={filters.ac}
-                onChange={() =>
-                  setFilters({ ...filters, ac: !filters.ac })
-                } />
-              AC
-            </label>
-
-            <label className="flex items-center gap-2 mb-2">
-              <input
-                type="checkbox"
-                checked={filters.nonAc}
-                onChange={() =>
-                  setFilters({ ...filters, nonAc: !filters.nonAc })
-                } />
-              Non-AC
-            </label>
-            <hr className="my-3" />
-
-            {/* Morning */}
-            <label className="flex items-center gap-2 mb-2">
-              <input
-                type="checkbox"
-                checked={filters.morning}
-                onChange={() =>
-                  setFilters({ ...filters, morning: !filters.morning })
-                }
-              />
-              Morning (5 AM – 12 PM)
-            </label>
-
-            {/* Night */}
-            <label className="flex items-center gap-2">
-              <input
-                type="checkbox"
-                checked={filters.night}
-                onChange={() =>
-                  setFilters({ ...filters, night: !filters.night })
-                }
-              />
-              Night (8 PM – 5 AM)
-            </label>
+              {/* Night */}
+              <div className="flex items-center gap-2 mb-4">
+                <button className={`px-4 py-1 border rounded-lg! 
+    ${filters.night
+                    ? "bg-red-500 text-white border-red-500"
+                    : "bg-white text-black border-gray-400"
+                  }`}
+                  onClick={() => setFilters({ ...filters, night: !filters.night })}>
+                  Night (8 PM – 5 AM)</button>
+              </div>
+            </div>
           </div>
 
           {/* RIGHT BUS LIST (SCROLL ONLY HERE) */}
@@ -248,7 +279,7 @@ function SearchResults() {
             bus={selectedBus}
             from={from}
             to={to}
-            onClose={() => setIsSeatOpen(false)}
+            onClose={handleCloseSeats}
           />
         )}
       </div>

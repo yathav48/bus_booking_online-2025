@@ -5,7 +5,7 @@ function BusDetails({ bus }) {
       <div>
         <h2 className="font-bold text-lg">{bus.name}</h2>
         <p className="text-sm text-gray-500">
-          AC Seater / Sleeper
+          {bus.busType} | {bus.seatsAvailable} seats
         </p>
       </div>
 
