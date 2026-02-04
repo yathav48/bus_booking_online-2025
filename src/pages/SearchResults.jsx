@@ -1,4 +1,4 @@
-import buses from "../Busdata/buses";
+import buses from "./Busdata/buses";
 import BusCard from "../component/BusCard";
 import { useNavigate } from "react-router-dom";
 import { IoArrowBack } from "react-icons/io5";
